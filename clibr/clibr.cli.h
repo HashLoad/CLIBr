@@ -15,7 +15,7 @@ namespace clibr
     class Cli : public clibr::ICli
     {
     private:
-        const std::string& _pathCLI;
+        const std::string& _pathTemp;
         std::string _commandExecuted;
         clibr::MapOptions _optionsNew;
         clibr::MapOptions _optionsInfos;
@@ -26,9 +26,9 @@ namespace clibr
         clibr::MapTags _tags;
         clibr::ListUpdates _updates;
     public:
-        Cli(const std::string& pathCLI);
+        Cli(const std::string& pathTemp);
         ~Cli() override;
-        const std::string& pathCLI() const override;
+        const std::string& pathTemp() const override;
         const std::string& commandExecuted() const override;
         const clibr::MapCommands& commands() const override;
         const clibr::MapOptions& optionsInternal() const override;

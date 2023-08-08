@@ -11,7 +11,7 @@ bool clibr::CommandGenerateProjectConsole::execute(
     std::string unitName = clibr::Utils::toLowerCase(fileName);
     std::string camelCaseName = std::string(1, std::toupper(fileName[0])) + fileName.substr(1);
     std::string programName = clibr::Utils::regexReplaceAll(camelCaseName, "-", "_");
-    std::string templateFilePath = cli->pathCLI() + "/console.project.pas";
+    std::string templateFilePath = cli->pathTemp() + "/console.project.pas";
     std::string templateFileName = dirName + "/" + unitName + ".dpr";
     std::string templateContent = clibr::Utils::readFromFile(templateFilePath);
     std::string modifiedContent = clibr::Utils::replaceString(templateContent, "{programName}", programName);

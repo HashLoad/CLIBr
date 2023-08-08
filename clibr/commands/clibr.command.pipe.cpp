@@ -29,7 +29,7 @@ bool clibr::CommandTransformPipe::execute(
     {
         std::filesystem::create_directories(sourcePath);
     }
-    std::string templateFilePath = cli->pathCLI() + "/pipe.pas";
+    std::string templateFilePath = cli->pathTemp() + "/pipe.pas";
     std::string templateFileName = dirName + "/" + unitName + ".dpr";
     std::string templateContent = clibr::Utils::readFromFile(templateFilePath);
     std::string modifiedContent = clibr::Utils::replaceString(templateContent, "{pipeName}", className);

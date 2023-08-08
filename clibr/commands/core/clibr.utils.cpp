@@ -27,9 +27,10 @@ std::string clibr::Utils::getSizeFile(const std::string& path)
 
 std::string clibr::Utils::toLowerCase(const std::string& input)
 {
-    std::string result = input;
-    std::transform(result.begin(), result.end(), result.begin(),
-        [](unsigned char c) { return std::tolower(c); });
+    std::string result;
+    for (char c : input) {
+        result += std::tolower(c);
+    }
     return result;
 }
 
@@ -81,7 +82,7 @@ std::string clibr::Utils::replaceString(const std::string& original,
     return result;
 }
 
-std::string clibr::Utils::join(const std::list<std::string>& strings, char delimiter)
+std::string clibr::Utils::join(const std::vector<std::string>& strings, char delimiter)
 {
     std::string result;
     for (const std::string& str : strings) {

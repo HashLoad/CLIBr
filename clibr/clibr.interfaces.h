@@ -13,7 +13,7 @@ namespace clibr
     class ICli
     {
     public:
-        virtual const std::string& pathCLI() const = 0;
+        virtual const std::string& pathTemp() const = 0;
         virtual const std::string& commandExecuted() const = 0;
         virtual const clibr::MapCommands& commands() const = 0;
         virtual const clibr::MapOptions& optionsInternal() const = 0;

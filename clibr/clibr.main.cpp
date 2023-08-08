@@ -41,7 +41,7 @@ void clibr::cliMain(const int argc, char* argv[])
     // Command find
     for (int LFor = 1; LFor < argc; LFor++)
     {
-        if (cli->commands().count(argv[LFor]) > 0)
+        if (cli->commands().contains(argv[LFor]))
         {
             commandOptions = cli->commands().at(argv[LFor]);
             cli->commandExecuted(argv[LFor]);
@@ -53,11 +53,11 @@ void clibr::cliMain(const int argc, char* argv[])
     for (int LFor = 1; LFor < argc; LFor++)
     {
         const std::string item = argv[LFor];
-        if (cli->commands().count(item) > 0)
+        if (commandOptions.contains(item))
         {
             options.push_back(item);
         }
-        else if (cli->tags().count(item) > 0)
+        else if (cli->tags().contains(item))
         {
             cli->tags().at(item) = true;
         }
@@ -66,14 +66,18 @@ void clibr::cliMain(const int argc, char* argv[])
             std::filesystem::path filePath(argv[LFor]);
             dirName = filePath.parent_path().string();
             fileName = filePath.filename().string();
+            if (dirName.empty())
+            {
+                dirName = ".";
+            }
         }
     }
-
+    
     // Execute
     for (std::string& item : options)
     {
-        if (commandOptions.count(item) == 0 &&
-            commandOptions[item]->getCommand() == nullptr)
+        if (commandOptions.contains(item) &&
+            commandOptions[item] == nullptr)
         {
             continue;
         }
@@ -93,7 +97,7 @@ void clibr::cliMain(const int argc, char* argv[])
     {
         isSuccess = updateExecute->execute(dirName, fileName, cli);
     }
-    else if (!isSuccess)
+    else
     {
         clibr::Print::printAlert("Run \'clibr --help\' for usage.");
     }

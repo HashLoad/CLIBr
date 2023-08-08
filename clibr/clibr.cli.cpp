@@ -21,7 +21,7 @@
 #include "commands/clibr.command.r.h"
 #include "clibr.cli.h"
 
-clibr::Cli::Cli(const std::string& pathCLI) : _pathCLI(pathCLI)
+clibr::Cli::Cli(const std::string& pathTemp) : _pathTemp(pathTemp)
 {
     this->_optionsInfos = 
     { 
@@ -137,9 +137,9 @@ clibr::Cli::~Cli()
     this->_updates.clear();
 }
 
-const std::string& clibr::Cli::pathCLI() const
+const std::string& clibr::Cli::pathTemp() const
 {
-    return this->_pathCLI;
+    return this->_pathTemp;
 }
 
 const std::string& clibr::Cli::commandExecuted() const

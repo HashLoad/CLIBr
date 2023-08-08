@@ -25,11 +25,11 @@ bool clibr::CommandService::execute(
         return false;
     }
     
-    if (std::filesystem::exists(sourcePath))
+    if (!std::filesystem::exists(sourcePath))
     {
         std::filesystem::create_directories(sourcePath);
     }
-    std::string templateFilePath = cli->pathCLI() + "/console.project.pas";
+    std::string templateFilePath = cli->pathTemp() + "/console.project.pas";
     std::string templateFileName = sourcePath + "/" + unitName + ".dpr";
     std::string templateContent = clibr::Utils::readFromFile(templateFilePath);
     std::string modifiedContent = clibr::Utils::replaceString(templateContent, "{programName}", className);

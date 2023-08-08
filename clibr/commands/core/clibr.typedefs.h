@@ -17,7 +17,7 @@ namespace clibr
 	typedef std::map<const std::string, bool> MapTags;
 	typedef std::vector<std::string> ListUpdates;
 	typedef std::vector<std::string> ListOptions;
-	typedef std::list<std::string> ListText;
+	typedef std::vector<std::string> ListText;
 	typedef std::pair<const std::string, clibr::CommandPair*> forPair;
 }
 
