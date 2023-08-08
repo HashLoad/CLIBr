@@ -104,7 +104,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <LanguageStandard>stdcpp17</LanguageStandard>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -133,17 +133,58 @@
     <ClCompile Include="clibr.cpp" />
     <ClCompile Include="clibr.interfaces.cpp" />
     <ClCompile Include="clibr.main.cpp" />
+    <ClCompile Include="commands\clibr.command.all.cpp" />
+    <ClCompile Include="commands\clibr.command.c.cpp" />
+    <ClCompile Include="commands\clibr.command.h.cpp" />
+    <ClCompile Include="commands\clibr.command.handler.cpp" />
+    <ClCompile Include="commands\clibr.command.i.cpp" />
+    <ClCompile Include="commands\clibr.command.info.cpp" />
+    <ClCompile Include="commands\clibr.command.m.cpp" />
+    <ClCompile Include="commands\clibr.command.pipe.cpp" />
+    <ClCompile Include="commands\clibr.command.r.cpp" />
+    <ClCompile Include="commands\clibr.command.s.cpp" />
+    <ClCompile Include="commands\clibr.command.templates.cpp" />
     <ClCompile Include="commands\clibr.command.v.cpp" />
     <ClCompile Include="commands\clibr.command.dpr.cpp" />
-    <ClCompile Include="core\clibr.command.pair.cpp" />
+    <ClCompile Include="commands\console\clibr.command.dpr.console.cpp" />
+    <ClCompile Include="commands\core\clibr.command.pair.cpp" />
+    <ClCompile Include="commands\core\clibr.print.cpp" />
+    <ClCompile Include="commands\core\clibr.utils.cpp" />
+    <ClCompile Include="commands\horse\clibr.command.dpr.horse.cpp" />
+    <ClCompile Include="commands\horse\clibr.command.handler.horse.cpp" />
+    <ClCompile Include="commands\update\clibr.update.dpr.cpp" />
+    <ClCompile Include="commands\vcl\clibr.command.dfm.vcl.cpp" />
+    <ClCompile Include="commands\vcl\clibr.command.dpr.vcl.cpp" />
+    <ClCompile Include="commands\vcl\clibr.command.pas.vcl.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="clibr.cli.h" />
     <ClInclude Include="clibr.interfaces.h" />
     <ClInclude Include="clibr.main.h" />
+    <ClInclude Include="commands\clibr.command.all.h" />
+    <ClInclude Include="commands\clibr.command.c.h" />
     <ClInclude Include="commands\clibr.command.dpr.h" />
+    <ClInclude Include="commands\clibr.command.h.h" />
+    <ClInclude Include="commands\clibr.command.handler.h" />
+    <ClInclude Include="commands\clibr.command.i.h" />
+    <ClInclude Include="commands\clibr.command.info.h" />
+    <ClInclude Include="commands\clibr.command.m.h" />
+    <ClInclude Include="commands\clibr.command.pipe.h" />
+    <ClInclude Include="commands\clibr.command.r.h" />
+    <ClInclude Include="commands\clibr.command.s.h" />
+    <ClInclude Include="commands\clibr.command.templates.h" />
     <ClInclude Include="commands\clibr.command.v.h" />
-    <ClInclude Include="core\clibr.command.pair.h" />
+    <ClInclude Include="commands\console\clibr.command.dpr.console.h" />
+    <ClInclude Include="commands\core\clibr.command.pair.h" />
+    <ClInclude Include="commands\core\clibr.typedefs.h" />
+    <ClInclude Include="commands\core\clibr.print.h" />
+    <ClInclude Include="commands\core\clibr.utils.h" />
+    <ClInclude Include="commands\horse\clibr.command.dpr.horse.h" />
+    <ClInclude Include="commands\horse\clibr.command.handler.horse.h" />
+    <ClInclude Include="commands\update\clibr.update.dpr.h" />
+    <ClInclude Include="commands\vcl\clibr.command.dfm.vcl.h" />
+    <ClInclude Include="commands\vcl\clibr.command.dpr.vcl.h" />
+    <ClInclude Include="commands\vcl\clibr.command.pas.vcl.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

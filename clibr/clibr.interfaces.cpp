@@ -1,4 +1,4 @@
 #include "clibr.interfaces.h"
 
-ICommand::~ICommand() {};
-ICli::~ICli() {};
+clibr::ICommand::~ICommand() {};
+clibr::ICli::~ICli() {};

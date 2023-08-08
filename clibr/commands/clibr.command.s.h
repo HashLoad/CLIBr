@@ -1,20 +1,20 @@
 #pragma once
 
-#ifndef COMMANDPROJECT_H
-#define COMMANDPROJECT_H
+#ifndef COMMANDSERVICE_H
+#define COMMANDSERVICE_H
 
 #include <string>
 #include "../clibr.interfaces.h"
 
 namespace clibr
 {
-    class CommandGenerateProject : public ICommand
+    class CommandService : public ICommand
     {
     public:
         bool execute(const std::string& dirName, const std::string& fileName,
             ICli* cli) override;
-        ~CommandGenerateProject() override;
+        ~CommandService() override;
     };
 }
 
-#endif // COMMANDPROJECT_H
+#endif // COMMANDSERVICE_H

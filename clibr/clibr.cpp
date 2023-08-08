@@ -2,6 +2,6 @@
 
 int main(int argc, char* argv[])
 {
-	cliMain(argc, argv);
+	clibr::cliMain(argc, argv);
 	return 0;
 }

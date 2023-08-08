@@ -1,38 +1,41 @@
 #pragma once
 
-#ifndef _CLI_H
-#define _CLI_H
+#ifndef CLI_H
+#define CLI_H
 
 #include <map>
 #include <list>
 #include <string>
 #include "clibr.interfaces.h"
-#include "core/clibr.command.pair.h"
+#include "commands/core/clibr.command.pair.h"
+#include "commands/core/clibr.typedefs.h"
 
-class Cli : public ICli
+namespace clibr
 {
-  private:
-    std::map<std::string, CommandPair*> _optionsNew;
-    std::map<std::string, CommandPair*> _optionsInfos;
-    std::map<std::string, CommandPair*> _optionsHelp;
-    std::map<std::string, CommandPair*> _optionsGenerate;
-    std::map<std::string, CommandPair*> _optionsInternal;
-    std::map<std::string, std::map<std::string, CommandPair*>&> _commands;
-    std::map<std::string, bool> _tags;
-    std::list<std::string> _updates;
-    std::string _pathCLI;
-    std::string _commandExecuted;
-public:
-    Cli(std::string pathCLI);
-    ~Cli() override;
-    std::string& pathCLI() override;
-    std::string& commandExecuted() override;
-    std::map<std::string, std::map<std::string, CommandPair*>&>& commands()
-        override;
-    std::map<std::string, CommandPair*>& optionsInternal() override;
-    std::map<std::string, bool>& tags() override;
-    std::list<std::string>& updates() override;
-    void commandExecuted(const std::string& value) override;
-};
+    class Cli : public clibr::ICli
+    {
+    private:
+        const std::string& _pathCLI;
+        std::string _commandExecuted;
+        clibr::MapOptions _optionsNew;
+        clibr::MapOptions _optionsInfos;
+        clibr::MapOptions _optionsHelp;
+        clibr::MapOptions _optionsGenerate;
+        clibr::MapOptions _optionsInternal;
+        clibr::MapCommands _commands;
+        clibr::MapTags _tags;
+        clibr::ListUpdates _updates;
+    public:
+        Cli(const std::string& pathCLI);
+        ~Cli() override;
+        const std::string& pathCLI() const override;
+        const std::string& commandExecuted() const override;
+        const clibr::MapCommands& commands() const override;
+        const clibr::MapOptions& optionsInternal() const override;
+        clibr::MapTags& tags() override;
+        clibr::ListUpdates& updates() override;
+        void commandExecuted(const std::string& value) override;
+    };
+}
 
-#endif // _CLI_H
+#endif // CLI_H

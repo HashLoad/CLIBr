@@ -1,0 +1,20 @@
+#pragma once
+
+#ifndef COMMANDPASVCL_H
+#define COMMANDPASVCL_H
+
+#include <string>
+#include "../../clibr.interfaces.h"
+
+namespace clibr
+{
+	class CommandGenerateUnitVCL : public ICommand
+	{
+	public:
+		bool execute(const std::string& dirName, const std::string& fileName,
+			ICli* cli) override;
+		~CommandGenerateUnitVCL() override;
+	};
+}
+
+#endif // COMMANDPASVCL_H

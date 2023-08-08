@@ -1,11 +1,25 @@
 #pragma once
 
-#ifndef _CLIMAIN_H
-#define _CLIMAIN_H
+#ifndef CLIMAIN_H
+#define CLIMAIN_H
 
 #include <iostream>
 #include <cstring>
+#include "clibr.interfaces.h"
 
-void cliMain(int argc, char* argv[]);
+namespace clibr
+{
+    void cliMain(const int argc, char* argv[]);
 
-#endif  //_CLIMAIN_H
+    class ResourceHandler
+    {
+    public:
+        ResourceHandler(ICli* cli, ICommand* updateExecute);
+        ~ResourceHandler();
+    private:
+        ICli* _cli;
+        ICommand* _updateExecute;
+    };
+}
+
+#endif  //CLIMAIN_H

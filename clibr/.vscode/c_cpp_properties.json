@@ -1,0 +1,20 @@
+{
+    "configurations": [
+        {
+            "name": "Configuração Padrão",
+            "defines": [],
+            "compilerPath": "D:\\mingw64\\bin\\clang++.exe",
+            "intelliSenseMode": "${default}",
+            "includePath": [
+                "${workspaceFolder}/**"
+            ],
+            "macFrameworkPath": [],
+            "browse": {
+                "limitSymbolsToIncludedHeaders": true,
+                "databaseFilename": "",
+                "path": []
+            }
+        }
+    ],
+    "version": 4
+}
