@@ -2,14 +2,14 @@
 #include <filesystem>
 #include <algorithm>
 #include <string>
-#include "commands/update/clibr.update.dpr.h"
-#include "commands/core/clibr.command.pair.h"
-#include "commands/core/clibr.typedefs.h"
-#include "commands/core/clibr.print.h"
-#include "commands/core/clibr.typedefs.h"
-#include "clibr.interfaces.h"
-#include "clibr.cli.h"
-#include "clibr.main.h"
+#include "commands/update/clibr.update.dpr.hpp"
+#include "commands/core/clibr.command.pair.hpp"
+#include "commands/core/clibr.typedefs.hpp"
+#include "commands/core/clibr.print.hpp"
+#include "commands/core/clibr.typedefs.hpp"
+#include "clibr.interfaces.hpp"
+#include "clibr.cli.hpp"
+#include "clibr.main.hpp"
 
 namespace sfs = std::filesystem;
 

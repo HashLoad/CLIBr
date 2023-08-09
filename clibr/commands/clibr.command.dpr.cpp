@@ -1,14 +1,14 @@
 #include <iostream>
 #include <string>
 #include <filesystem>
-#include "clibr.command.dpr.h"
-#include "core/clibr.utils.h"
-#include "core/clibr.print.h"
-#include "core/clibr.command.pair.h"
-#include "console/clibr.command.dpr.console.h"
-#include "vcl/clibr.command.dfm.vcl.h"
-#include "vcl/clibr.command.pas.vcl.h"
-#include "../clibr.interfaces.h"
+#include "clibr.command.dpr.hpp"
+#include "core/clibr.utils.hpp"
+#include "core/clibr.print.hpp"
+#include "core/clibr.command.pair.hpp"
+#include "console/clibr.command.dpr.console.hpp"
+#include "vcl/clibr.command.dfm.vcl.hpp"
+#include "vcl/clibr.command.pas.vcl.hpp"
+#include "../clibr.interfaces.hpp"
 
 bool clibr::CommandGenerateProject::execute(
     const std::string& dirName, const std::string& fileName, clibr::ICli* cli)

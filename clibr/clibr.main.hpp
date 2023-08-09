@@ -5,7 +5,7 @@
 
 #include <iostream>
 #include <cstring>
-#include "clibr.interfaces.h"
+#include "clibr.interfaces.hpp"
 
 namespace clibr
 {

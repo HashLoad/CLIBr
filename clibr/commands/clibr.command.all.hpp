@@ -4,7 +4,7 @@
 #define COMMANDALL_H
 
 #include <string>
-#include "../clibr.interfaces.h"
+#include "../clibr.interfaces.hpp"
 
 namespace clibr
 {

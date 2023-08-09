@@ -6,9 +6,9 @@
 #include <map>
 #include <list>
 #include <string>
-#include "clibr.interfaces.h"
-#include "commands/core/clibr.command.pair.h"
-#include "commands/core/clibr.typedefs.h"
+#include "clibr.interfaces.hpp"
+#include "commands/core/clibr.command.pair.hpp"
+#include "commands/core/clibr.typedefs.hpp"
 
 namespace clibr
 {

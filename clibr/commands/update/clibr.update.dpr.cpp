@@ -2,10 +2,10 @@
 #include <fstream>
 #include <vector>
 #include <filesystem>
-#include "clibr.update.dpr.h"
-#include "../core/clibr.utils.h"
-#include "../core/clibr.print.h"
-#include "../../clibr.interfaces.h"
+#include "clibr.update.dpr.hpp"
+#include "../core/clibr.utils.hpp"
+#include "../core/clibr.print.hpp"
+#include "../../clibr.interfaces.hpp"
 
 bool clibr::CommandUpdateDpr::execute(
     const std::string& dirName, const std::string& fileName, clibr::ICli* cli)

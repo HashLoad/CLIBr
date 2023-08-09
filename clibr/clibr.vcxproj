@@ -182,9 +182,9 @@
     <ClInclude Include="commands\horse\clibr.command.dpr.horse.hpp" />
     <ClInclude Include="commands\horse\clibr.command.handler.horse.hpp" />
     <ClInclude Include="commands\update\clibr.update.dpr.hpp" />
-    <ClInclude Include="commands\vcl\clibr.command.dfm.vcl.h" />
-    <ClInclude Include="commands\vcl\clibr.command.dpr.vcl.h" />
-    <ClInclude Include="commands\vcl\clibr.command.pas.vcl.h" />
+    <ClInclude Include="commands\vcl\clibr.command.dfm.vcl.hpp" />
+    <ClInclude Include="commands\vcl\clibr.command.dpr.vcl.hpp" />
+    <ClInclude Include="commands\vcl\clibr.command.pas.vcl.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,10 +1,10 @@
 #include <iostream>
 #include <string>
 #include <filesystem>
-#include "clibr.command.s.h"
-#include "core/clibr.utils.h"
-#include "core/clibr.print.h"
-#include "../clibr.interfaces.h"
+#include "clibr.command.s.hpp"
+#include "core/clibr.utils.hpp"
+#include "core/clibr.print.hpp"
+#include "../clibr.interfaces.hpp"
 
 bool clibr::CommandService::execute(
     const std::string& dirName, const std::string& fileName, clibr::ICli* cli)

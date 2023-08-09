@@ -3,7 +3,7 @@
 #ifndef COMMANDPAIR_H
 #define COMMANDPAIR_H
 
-#include "../../clibr.interfaces.h"
+#include "../../clibr.interfaces.hpp"
 
 namespace clibr
 {

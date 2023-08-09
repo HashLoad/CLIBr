@@ -6,7 +6,7 @@
 #include <map>
 #include <list>
 #include <string>
-#include "commands/core/clibr.typedefs.h"
+#include "commands/core/clibr.typedefs.hpp"
 
 namespace clibr
 {

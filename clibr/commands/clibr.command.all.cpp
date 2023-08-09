@@ -1,11 +1,11 @@
 #include <iostream>
 #include <string>
 #include <filesystem>
-#include "clibr.command.all.h"
-#include "core/clibr.utils.h"
-#include "core/clibr.print.h"
-#include "core/clibr.command.pair.h"
-#include "../clibr.interfaces.h"
+#include "clibr.command.all.hpp"
+#include "core/clibr.utils.hpp"
+#include "core/clibr.print.hpp"
+#include "core/clibr.command.pair.hpp"
+#include "../clibr.interfaces.hpp"
 
 bool clibr::CommandAll::execute(
     const std::string& dirName, const std::string& fileName, clibr::ICli* cli)

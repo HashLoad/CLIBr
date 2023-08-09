@@ -167,13 +167,13 @@
     <ClInclude Include="commands\update\clibr.update.dpr.hpp">
       <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>
-    <ClInclude Include="commands\vcl\clibr.command.dfm.vcl.h">
+    <ClInclude Include="commands\vcl\clibr.command.dfm.vcl.hpp">
       <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>
-    <ClInclude Include="commands\vcl\clibr.command.dpr.vcl.h">
+    <ClInclude Include="commands\vcl\clibr.command.dpr.vcl.hpp">
       <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>
-    <ClInclude Include="commands\vcl\clibr.command.pas.vcl.h">
+    <ClInclude Include="commands\vcl\clibr.command.pas.vcl.hpp">
       <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>
     <ClInclude Include="commands\core\clibr.utils.hpp">
