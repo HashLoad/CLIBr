@@ -14,12 +14,12 @@ bool clibr::CommandModule::execute(
         clibr::Print::printAlert("Invalid parameters!");
         return false;
     }
-    std::string unitName = clibr::Utils::toLowerCase(fileName);
-    std::string camelCaseName = std::string(1, std::toupper(fileName[0])) + fileName.substr(1);
-    std::string className = "T" + camelCaseName + "Module";
-    std::string sourcePath = dirName;
-    bool isAppModule = (unitName == "app");
-    bool isGuard = false;
+    std::string unitName{ clibr::Utils::toLowerCase(fileName) };
+    std::string camelCaseName{ std::string(1, std::toupper(fileName[0])) + fileName.substr(1) };
+    std::string className{ "T" + camelCaseName + "Module" };
+    std::string sourcePath{ dirName };
+    bool isAppModule{ (unitName == "app") };
+    bool isGuard{ false };
 
     if (sourcePath.empty() || sourcePath == ".")
     {
@@ -28,22 +28,15 @@ bool clibr::CommandModule::execute(
 
     if (!std::filesystem::exists(sourcePath))
     {
-        bool isCreate = std::filesystem::create_directories(sourcePath);
+        bool isCreate{ std::filesystem::create_directories(sourcePath) };
     }
 
-    std::string templateFilePath = "";
-    if (isAppModule)
-    {
-        templateFilePath = cli->pathTemp() + "/module.app.pas";
-    }
-    else
-    {
-        templateFilePath = cli->pathTemp() + "/module.pas";
-    }
-    std::string templateFileName = sourcePath + "/" + unitName + ".module.pas";
-    std::string templateContent = clibr::Utils::readFromFile(templateFilePath);
-    std::string modifiedContent = clibr::Utils::replaceString(templateContent, "{moduleName}", className);
-
+    std::string templateFilePath { "" };
+    isAppModule ? templateFilePath = cli->pathTemp() + "/module.app.pas" :
+                  templateFilePath = cli->pathTemp() + "/module.pas";
+    std::string templateFileName{ sourcePath + "/" + unitName + ".module.pas" };
+    std::string templateContent{ clibr::Utils::readFromFile(templateFilePath) };
+    std::string modifiedContent{ clibr::Utils::replaceString(templateContent, "{moduleName}", className) };
     modifiedContent = clibr::Utils::replaceString(modifiedContent, "{unitName}", unitName);
     modifiedContent = clibr::Utils::replaceString(modifiedContent, "{className}", camelCaseName);
 

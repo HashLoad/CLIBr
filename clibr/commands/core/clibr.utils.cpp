@@ -14,7 +14,7 @@ std::string clibr::Utils::getSizeFile(const std::string& path)
         return "Error while opening the file";
     }
 
-    std::streampos size = file.tellg();
+    std::streampos size{ file.tellg() };
     file.close();
 
     if (size < 0)
@@ -71,7 +71,7 @@ bool clibr::Utils::writeToFile(const std::string& filePath, const std::string& c
 std::string clibr::Utils::replaceString(const std::string& original,
     const std::string& pattern, const std::string& replacement) 
 {
-    std::string result = original;
+    std::string result{ original };
     size_t pos = 0;
 
     while ((pos = result.find(pattern, pos)) != std::string::npos) 

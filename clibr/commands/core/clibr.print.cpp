@@ -3,14 +3,14 @@
 #include "clibr.print.hpp"
 
 // Definição dos membros estáticos
-const char* clibr::Print::_reset = "\u001b" "[0m";
-const char* clibr::Print::_red = "\u001b" "[31m";
-const char* clibr::Print::_green = "\u001b" "[32m";
-const char* clibr::Print::_blue = "\u001b" "[34m";
-const char* clibr::Print::_yellow = "\u001b" "[33m";
-const char* clibr::Print::_magenta = "\u001b" "[35m";
-const char* clibr::Print::_cyan = "\u001b" "[36m";
-const char* clibr::Print::_white = "\u001b" "[37m";
+const char* clibr::Print::_reset{ "\u001b" "[0m" };
+const char* clibr::Print::_red{ "\u001b" "[31m" };
+const char* clibr::Print::_green{ "\u001b" "[32m" };
+const char* clibr::Print::_blue{ "\u001b" "[34m" };
+const char* clibr::Print::_yellow{ "\u001b" "[33m" };
+const char* clibr::Print::_magenta{ "\u001b" "[35m" };
+const char* clibr::Print::_cyan{ "\u001b" "[36m" };
+const char* clibr::Print::_white{ "\u001b" "[37m" };
 
 void clibr::Print::printCreate(const std::string& title, const std::string& text, const std::string& message)
 {

@@ -14,10 +14,10 @@ bool clibr::CommandTransformPipe::execute(
         clibr::Print::printAlert("Invalid parameters!");
         return false;
     }
-    std::string unitName = clibr::Utils::toLowerCase(fileName);
-    std::string camelCaseName = std::string(1, std::toupper(fileName[0])) + fileName.substr(1);
-    std::string className = "TParse" + camelCaseName + "Pipe";
-    std::string sourcePath = dirName;
+    std::string unitName{ clibr::Utils::toLowerCase(fileName) };
+    std::string camelCaseName{ std::string(1, std::toupper(fileName[0])) + fileName.substr(1) };
+    std::string className{ "TParse" + camelCaseName + "Pipe" };
+    std::string sourcePath{ dirName };
 
     if (sourcePath.empty() || sourcePath == ".")
     {
@@ -28,14 +28,14 @@ bool clibr::CommandTransformPipe::execute(
     {
         std::filesystem::create_directories(sourcePath);
     }
-    std::string templateFilePath = cli->pathTemp() + "/pipe.pas";
-    std::string templateFileName = dirName + "/" + unitName + ".dpr";
-    std::string templateContent = clibr::Utils::readFromFile(templateFilePath);
-    std::string modifiedContent = clibr::Utils::replaceString(templateContent, "{pipeName}", className);
+    std::string templateFilePath{ cli->pathTemp() + "/pipe.pas" };
+    std::string templateFileName{ dirName + "/" + unitName + ".dpr" };
+    std::string templateContent{ clibr::Utils::readFromFile(templateFilePath) };
+    std::string modifiedContent{ clibr::Utils::replaceString(templateContent, "{pipeName}", className) };
 
-    bool success = clibr::Utils::writeToFile(templateFileName, modifiedContent);
+    bool isSuccess{ clibr::Utils::writeToFile(templateFileName, modifiedContent) };
 
-    if (success)
+    if (isSuccess)
     {
         clibr::Print::printCreate("CREATE", templateFileName, clibr::Utils::getSizeFile(templateFileName));
         // List Update DPR
@@ -48,7 +48,7 @@ bool clibr::CommandTransformPipe::execute(
             .append(unitName)
             .append(".pipe.pas\',"));
     }
-    return success;
+    return isSuccess;
 };
 
 clibr::CommandTransformPipe::~CommandTransformPipe() {};

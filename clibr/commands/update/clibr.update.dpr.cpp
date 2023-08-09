@@ -10,9 +10,8 @@
 bool clibr::CommandUpdateDpr::execute(
     const std::string& dirName, const std::string& fileName, clibr::ICli* cli)
 {
-    std::filesystem::path currentDir = std::filesystem::current_path() / dirName;
+    std::filesystem::path currentDir{ std::filesystem::current_path() / dirName };
     currentDir = std::filesystem::canonical(currentDir);
-
     std::vector<std::filesystem::directory_entry> files;
 
     for (const auto& entry : std::filesystem::directory_iterator(currentDir))
@@ -23,7 +22,7 @@ bool clibr::CommandUpdateDpr::execute(
         }
     }
 
-    std::string dprFilePath = "";
+    std::string dprFilePath{ "" };
     for (const auto& file : files)
     {
         if (file.path().extension() == ".dpr") 
@@ -46,8 +45,8 @@ bool clibr::CommandUpdateDpr::execute(
         lines.push_back(line);
     }
 
-    size_t usesIndex = -1;
-    for (size_t iFor = 0; iFor < lines.size(); iFor++) 
+    int usesIndex{ -1 };
+    for (int iFor = 0; iFor < lines.size(); iFor++) 
     {
         if (lines[iFor].find("uses") != std::string::npos) 
         {
@@ -62,8 +61,8 @@ bool clibr::CommandUpdateDpr::execute(
         return false;
     }
 
-    size_t semicolonIndex = -1;
-    for (size_t iFor = usesIndex + 1; iFor < lines.size(); iFor++) 
+    int semicolonIndex{ -1 };
+    for (int iFor = usesIndex + 1; iFor < lines.size(); iFor++) 
     {
         if (lines[iFor].find(';') != std::string::npos)
         {

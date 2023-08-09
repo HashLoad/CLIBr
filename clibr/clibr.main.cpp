@@ -16,15 +16,15 @@ namespace sfs = std::filesystem;
 void clibr::cliMain(const int argc, char* argv[])
 {
     sfs::path executablePath(argv[0]);
-    sfs::path pathCLI = executablePath.parent_path();
-    std::string pathFormated = pathCLI.string() + "/templates";
+    sfs::path pathCLI { executablePath.parent_path() };
+    std::string pathFormated { pathCLI.string() + "/templates" };
     std::replace(pathFormated.begin(), pathFormated.end(), '\\', '/');
+    std::string dirName { "" };
+    std::string fileName { "" };
+    std::shared_ptr<clibr::ICli> cli { std::make_shared<clibr::Cli>(pathFormated) };
     clibr::ListOptions options;
     clibr::MapOptions commandOptions;
-    std::string dirName = "";
-    std::string fileName = "";
-    std::shared_ptr<clibr::ICli> cli = std::make_shared<clibr::Cli>(pathFormated);
-    bool isSuccess = false;
+    bool isSuccess { false };
 
     // Command find
     for (int LFor = 1; LFor < argc; LFor++)
@@ -40,7 +40,7 @@ void clibr::cliMain(const int argc, char* argv[])
     // Arguments find
     for (int LFor = 1; LFor < argc; LFor++)
     {
-        const std::string item = argv[LFor];
+        const std::string item{ argv[LFor] };
         if (commandOptions.contains(item))
         {
             options.push_back(item);
@@ -62,7 +62,7 @@ void clibr::cliMain(const int argc, char* argv[])
     }
     
     // Execute
-    for (std::string& item : options)
+    for (const std::string& item : options)
     {
         if (commandOptions.contains(item) &&
             commandOptions[item] == nullptr)
@@ -70,7 +70,7 @@ void clibr::cliMain(const int argc, char* argv[])
             continue;
         }
 
-        clibr::ICommand* command = commandOptions[item]->getCommand();
+        clibr::ICommand* command{ commandOptions[item]->getCommand() };
         if (auto specificCommand = dynamic_cast<clibr::ICommand*>(command))
         {
             isSuccess = specificCommand->execute(dirName, fileName, cli.get());

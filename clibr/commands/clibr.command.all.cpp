@@ -15,9 +15,8 @@ bool clibr::CommandAll::execute(
         clibr::Print::printAlert("Invalid parameters!");
         return false;
     }
-    std::string allPath = dirName;
-    std::string sourcePath = dirName;
-    bool isHorse = false;
+    std::string allPath{ dirName };
+    std::string sourcePath{ dirName };
 
     if (allPath.empty() || allPath == ".")
     {
@@ -27,21 +26,19 @@ bool clibr::CommandAll::execute(
 
     if (!std::filesystem::exists(allPath))
     {
-        bool isCreate = std::filesystem::create_directories(allPath);
+        bool isCreate{ std::filesystem::create_directories(allPath) };
     }
     sourcePath += "/modules/" + fileName;
 
     // Horse
+    bool isHorse{ false };
     if (cli->tags().contains("--horse")) {
         isHorse = cli->tags().at("--horse");
     }
 
-    if (isHorse) {
-        _createRouteHandleHorse(sourcePath, fileName, cli);
-    }
-    else {
-        _createRouteHandle(sourcePath, fileName, cli);
-    }
+    isHorse ? _createRouteHandleHorse(sourcePath, fileName, cli) : 
+              _createRouteHandle(sourcePath, fileName, cli);
+
     _createModule(sourcePath, fileName, cli);
     _createController(sourcePath + "/controllers", fileName, cli);
     _createService(sourcePath + "/services", fileName, cli);
@@ -54,39 +51,39 @@ clibr::CommandAll::~CommandAll() {};
 void clibr::CommandAll::_createModule(const std::string& dirName, 
     const std::string& fileName, clibr::ICli* cli) 
 {
-    clibr::CommandPair* commandPair = cli->commands().at("g").at("m");
-    clibr::ICommand* command = commandPair->getCommand();
+    clibr::CommandPair* commandPair{ cli->commands().at("g").at("m") };
+    clibr::ICommand* command{ commandPair->getCommand() };
     bool isSuccess = command->execute(dirName, fileName, cli);
 }
 
 void clibr::CommandAll::_createController(const std::string& dirName, 
     const std::string& fileName, clibr::ICli* cli) 
 {
-    clibr::CommandPair* commandPair = cli->commands().at("g").at("c");
-    clibr::ICommand* command = commandPair->getCommand();
+    clibr::CommandPair* commandPair{ cli->commands().at("g").at("c") };
+    clibr::ICommand* command{ commandPair->getCommand() };
     bool isSuccess = command->execute(dirName, fileName, cli);
 }
 
 void clibr::CommandAll::_createService(const std::string& dirName, 
     const std::string& fileName, clibr::ICli* cli) 
 {
-    clibr::CommandPair* commandPair = cli->commands().at("g").at("s");
-    clibr::ICommand* command = commandPair->getCommand();
+    clibr::CommandPair* commandPair{ cli->commands().at("g").at("s") };
+    clibr::ICommand* command{ commandPair->getCommand() };
     bool isSuccess = command->execute(dirName, fileName, cli);
 }
 
 void clibr::CommandAll::_createRouteHandleHorse(const std::string& dirName, 
     const std::string& fileName, clibr::ICli* cli) 
 {
-    clibr::CommandPair* commandPair = cli->optionsInternal().at("horse-handler");
-    clibr::ICommand* command = commandPair->getCommand();
+    clibr::CommandPair* commandPair{ cli->optionsInternal().at("horse-handler") };
+    clibr::ICommand* command{ commandPair->getCommand() };
     bool isSuccess = command->execute(dirName, fileName, cli);
 }
 
 void clibr::CommandAll::_createRouteHandle(const std::string& dirName, 
     const std::string& fileName, clibr::ICli* cli) 
 {
-    clibr::CommandPair* commandPair = cli->optionsInternal().at("handler");
-    clibr::ICommand* command = commandPair->getCommand();
+    clibr::CommandPair* commandPair{ cli->optionsInternal().at("handler") };
+    clibr::ICommand* command{ commandPair->getCommand() };
     bool isSuccess = command->execute(dirName, fileName, cli);
 }

@@ -18,8 +18,8 @@ bool clibr::CommandGenerateProject::execute(
         clibr::Print::printAlert("Invalid parameters!");
         return false;
     }
-    std::string projectPath = dirName;
-    std::string sourcePath = dirName;
+    std::string projectPath{ dirName };
+    std::string sourcePath{ dirName };
 
     if (!std::filesystem::exists(projectPath))
     {
@@ -30,15 +30,15 @@ bool clibr::CommandGenerateProject::execute(
     }
     sourcePath += "/src/modules/ping";
 
-    const clibr::MapTags& tags = cli->tags();
-    bool isVCL = false;
+    const clibr::MapTags& tags{ cli->tags() };
     // VCL
+    bool isVCL{ false };
     if (tags.contains("--vcl")) {
         isVCL = cli->tags().at("--vcl");
     }
  
-    bool isHorse = false;
     // Horse
+    bool isHorse{ false };
     if (tags.contains("--horse")) {
         isHorse = cli->tags().at("--horse");
     }
@@ -83,47 +83,47 @@ void clibr::CommandGenerateProject::_createAppModule(const std::string& dirName,
 void clibr::CommandGenerateProject::_createModule(const std::string& dirName, 
     const std::string& fileName, clibr::ICli* cli)
 {
-    clibr::CommandPair* commandPair = cli->commands().at("g").at("m");
-    clibr::ICommand* command = commandPair->getCommand();
+    clibr::CommandPair* commandPair{ cli->commands().at("g").at("m") };
+    clibr::ICommand* command{ commandPair->getCommand() };
     command->execute(dirName, fileName, cli);
 }
 
 void clibr::CommandGenerateProject::_createController(const std::string& dirName, 
     const std::string& fileName, clibr::ICli* cli) {
-    clibr::CommandPair* commandPair = cli->commands().at("g").at("c");
-    clibr::ICommand* command = commandPair->getCommand();
+    clibr::CommandPair* commandPair{ cli->commands().at("g").at("c") };
+    clibr::ICommand* command{ commandPair->getCommand() };
     command->execute(dirName, fileName, cli);
 }
 
 void clibr::CommandGenerateProject::_createService(const std::string& dirName, 
     const std::string& fileName, clibr::ICli* cli)
 {
-    clibr::CommandPair* commandPair = cli->commands().at("g").at("s");
-    clibr::ICommand* command = commandPair->getCommand();
+    clibr::CommandPair* commandPair{ cli->commands().at("g").at("s") };
+    clibr::ICommand* command{ commandPair->getCommand() };
     command->execute(dirName, fileName, cli);
 }
 
 void clibr::CommandGenerateProject::_createProjectHorse(const std::string& dirName, 
     const std::string& fileName, clibr::ICli* cli)
 {
-    clibr::CommandPair* commandPair = cli->optionsInternal().at("horse-app");
-    clibr::ICommand* command = commandPair->getCommand();
+    clibr::CommandPair* commandPair{ cli->optionsInternal().at("horse-app") };
+    clibr::ICommand* command{ commandPair->getCommand() };
     command->execute(dirName, fileName, cli);
 }
 
 void clibr::CommandGenerateProject::_createRouteHandleHorse(const std::string& dirName, 
     const std::string& fileName, clibr::ICli* cli)
 {
-    clibr::CommandPair* commandPair = cli->optionsInternal().at("horse-handler");
-    clibr::ICommand* command = commandPair->getCommand();
+    clibr::CommandPair* commandPair{ cli->optionsInternal().at("horse-handler") };
+    clibr::ICommand* command{ commandPair->getCommand() };
     command->execute(dirName, fileName, cli);
 }
 
 void clibr::CommandGenerateProject::_createRouteHandle(const std::string& dirName, 
     const std::string& fileName, clibr::ICli* cli)
 {
-    clibr::CommandPair* commandPair = cli->optionsInternal().at("handler");
-    clibr::ICommand* command = commandPair->getCommand();
+    clibr::CommandPair* commandPair{ cli->optionsInternal().at("handler") };
+    clibr::ICommand* command{ commandPair->getCommand() };
     command->execute(dirName, fileName, cli);
 }
 
@@ -132,8 +132,8 @@ void clibr::CommandGenerateProject::_createProjectVCL(const std::string& dirName
 {
     clibr::CommandGenerateFormVCL formVCL;
     clibr::CommandGenerateUnitVCL unitVCL;
-    clibr::CommandPair* commandPair = cli->optionsInternal().at("vcl-app");
-    clibr::ICommand* command = commandPair->getCommand();
+    clibr::CommandPair* commandPair{ cli->optionsInternal().at("vcl-app") };
+    clibr::ICommand* command{ commandPair->getCommand() };
 
     command->execute(dirName, fileName, cli);
     formVCL.execute(dirName, fileName, cli);
