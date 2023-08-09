@@ -13,15 +13,6 @@
 
 namespace sfs = std::filesystem;
 
-clibr::ResourceHandler::ResourceHandler(clibr::ICli* cli, clibr::ICommand* updateExecute)
-        : _cli(cli), _updateExecute(updateExecute) {}
-
-clibr::ResourceHandler::~ResourceHandler()
-{
-    delete _updateExecute;
-    delete _cli;
-};
-
 void clibr::cliMain(const int argc, char* argv[])
 {
     sfs::path executablePath(argv[0]);
@@ -32,11 +23,8 @@ void clibr::cliMain(const int argc, char* argv[])
     clibr::MapOptions commandOptions;
     std::string dirName = "";
     std::string fileName = "";
+    std::shared_ptr<clibr::ICli> cli = std::make_shared<clibr::Cli>(pathFormated);
     bool isSuccess = false;
-    clibr::ICli* cli = new clibr::Cli(pathFormated);
-    clibr::ICommand* updateExecute = new clibr::CommandUpdateDpr();
-    // Auto destroy (delete cli and updateExecute pointer)
-    clibr::ResourceHandler resourceHandler(cli, updateExecute);
 
     // Command find
     for (int LFor = 1; LFor < argc; LFor++)
@@ -85,7 +73,7 @@ void clibr::cliMain(const int argc, char* argv[])
         clibr::ICommand* command = commandOptions[item]->getCommand();
         if (auto specificCommand = dynamic_cast<clibr::ICommand*>(command))
         {
-            isSuccess = specificCommand->execute(dirName, fileName, cli);
+            isSuccess = specificCommand->execute(dirName, fileName, cli.get());
             if (isSuccess)
             {
                 break;
@@ -95,7 +83,8 @@ void clibr::cliMain(const int argc, char* argv[])
 
     if (isSuccess && !cli->updates().empty())
     {
-        isSuccess = updateExecute->execute(dirName, fileName, cli);
+        std::shared_ptr<clibr::ICommand> updateExecute = std::make_shared<clibr::CommandUpdateDpr>();
+        isSuccess = updateExecute->execute(dirName, fileName, cli.get());
     }
 
     if (!isSuccess)

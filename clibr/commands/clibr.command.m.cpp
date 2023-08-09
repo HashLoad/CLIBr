@@ -77,7 +77,7 @@ clibr::CommandModule::~CommandModule() {};
 
 bool clibr::CommandModule::_argGuardExist(const ICli* cli)
 {
-    const MapTags& tags = cli->tags();
+    const clibr::MapTags& tags = cli->tags();
     bool result;
     if (tags.contains("--guard"))
     {
@@ -94,7 +94,7 @@ bool clibr::CommandModule::_argGuardExist(const ICli* cli)
     return result;
 }
 
-std::string clibr::CommandModule::_generateGuardBody(std::string& camelCaseName, const ICli* cli)
+std::string clibr::CommandModule::_generateGuardBody(const std::string& camelCaseName, const ICli* cli)
 {
     std::string templateFilePath = cli->pathTemp() + "/" + "body.pas";
     std::string templateContent = clibr::Utils::readFromFile(templateFilePath);
@@ -103,7 +103,7 @@ std::string clibr::CommandModule::_generateGuardBody(std::string& camelCaseName,
     return modifiedContent;
 }
 
-std::string clibr::CommandModule::_generateGuardHeader(std::string& camelCaseName, const ICli* cli)
+std::string clibr::CommandModule::_generateGuardHeader(const std::string& camelCaseName, const ICli* cli)
 {
     std::string templateFilePath = cli->pathTemp() + "/" + "header.pas";
     std::string templateContent = clibr::Utils::readFromFile(templateFilePath);

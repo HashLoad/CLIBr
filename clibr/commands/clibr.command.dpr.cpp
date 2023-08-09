@@ -20,8 +20,6 @@ bool clibr::CommandGenerateProject::execute(
     }
     std::string projectPath = dirName;
     std::string sourcePath = dirName;
-    bool isHorse = false;
-    bool isVCL = false;
 
     if (!std::filesystem::exists(projectPath))
     {
@@ -31,13 +29,17 @@ bool clibr::CommandGenerateProject::execute(
         }
     }
     sourcePath += "/src/modules/ping";
+
+    const clibr::MapTags& tags = cli->tags();
+    bool isVCL = false;
     // VCL
-    if (cli->tags().contains("--vcl")) {
+    if (tags.contains("--vcl")) {
         isVCL = cli->tags().at("--vcl");
     }
  
+    bool isHorse = false;
     // Horse
-    if (cli->tags().contains("--horse")) {
+    if (tags.contains("--horse")) {
         isHorse = cli->tags().at("--horse");
     }
  
@@ -75,9 +77,7 @@ void clibr::CommandGenerateProject::_createProject(const std::string& dirName,
 void clibr::CommandGenerateProject::_createAppModule(const std::string& dirName, 
     const std::string& fileName, clibr::ICli* cli)
 {
-    clibr::CommandPair* commandPair = cli->commands().at("g").at("m");
-    clibr::ICommand* command = commandPair->getCommand();
-    command->execute(dirName, fileName, cli);
+    _createModule(dirName, fileName, cli);
 }
 
 void clibr::CommandGenerateProject::_createModule(const std::string& dirName, 

@@ -16,8 +16,8 @@ namespace clibr
         ~CommandModule() override;
     private:
       bool _argGuardExist(const ICli* cli);
-      std::string _generateGuardBody(std::string& camelCaseName, const ICli* cli);
-      std::string _generateGuardHeader(std::string& camelCaseName, const ICli* cli);
+      std::string _generateGuardBody(const std::string& camelCaseName, const ICli* cli);
+      std::string _generateGuardHeader(const std::string& camelCaseName, const ICli* cli);
     };
 }
 
