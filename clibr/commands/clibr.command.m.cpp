@@ -69,8 +69,7 @@ bool clibr::CommandModule::execute(
             .append(fileName)
             .append("\\")
             .append(unitName)
-            .append(".module.pas\',")
-            .append(","));
+            .append(".module.pas\',"));
     }
     return success;
 };
@@ -79,14 +78,15 @@ clibr::CommandModule::~CommandModule() {};
 
 bool clibr::CommandModule::_argGuardExist(const ICli* cli)
 {
+    const MapTags& tags = cli->tags();
     bool result;
-    if (cli->tags().contains("--guard"))
+    if (tags.contains("--guard"))
     {
-        result = cli->tags().at("--guard");
+        result = tags.at("--guard");
     }
-    else if (cli->tags().contains("-gu"))
+    else if (tags.contains("-gu"))
     {
-        result = cli->tags().at("-gu");
+        result = tags.at("-gu");
     }
     else
     {

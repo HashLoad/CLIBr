@@ -48,8 +48,7 @@ bool clibr::CommandService::execute(
             .append(fileName)
             .append("\\")
             .append(unitName)
-            .append(".service.pas\'")
-            .append(","));
+            .append(".service.pas\',"));
     }
     return success;
 };

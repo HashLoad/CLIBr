@@ -50,8 +50,7 @@ bool clibr::CommandController::execute(
             .append(fileName)
             .append("\\")
             .append(unitName)
-            .append(".controller.pas\',")
-            .append(","));
+            .append(".controller.pas\',"));
     }
     return success;
 };

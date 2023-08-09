@@ -50,8 +50,7 @@ bool clibr::CommandRouteHandler::execute(
             .append(fileName)
             .append("\\")
             .append(unitName)
-            .append(".route.handler.pas\',")
-            .append(","));
+            .append(".route.handler.pas\',"));
     }
     return success;
 };

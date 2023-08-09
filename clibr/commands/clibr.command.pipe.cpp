@@ -47,8 +47,7 @@ bool clibr::CommandTransformPipe::execute(
             .append(fileName)
             .append("\\")
             .append(unitName)
-            .append(".pipe.pas\'")
-            .append(","));
+            .append(".pipe.pas\',"));
     }
     return success;
 };
