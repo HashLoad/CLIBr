@@ -32,9 +32,11 @@ namespace clibr
         const std::string& commandExecuted() const override;
         const clibr::MapCommands& commands() const override;
         const clibr::MapOptions& optionsInternal() const override;
-        clibr::MapTags& tags() override;
-        clibr::ListUpdates& updates() override;
+        const clibr::MapTags& tags() const override;
+        const clibr::ListUpdates& updates() const override;
         void commandExecuted(const std::string& value) override;
+        void setTagValue(const std::string& name, const bool value) override;
+        void setUpdate(const std::string& value) override;
     };
 }
 

@@ -5,7 +5,8 @@
 #include "core/clibr.print.h"
 #include "../clibr.interfaces.h"
 
-bool clibr::CommandHelp::execute(const std::string& dirName, const std::string& fileName, clibr::ICli* cli)
+bool clibr::CommandHelp::execute(
+    const std::string& dirName, const std::string& fileName, clibr::ICli* cli)
 {
     if (cli->commandExecuted() == "generate" || cli->commandExecuted() == "g") {
         _executeInternalG();
@@ -24,6 +25,7 @@ clibr::CommandHelp::~CommandHelp() {};
 void clibr::CommandHelp::_executeInternal() {
 
     clibr::ListText printText;
+    printText.reserve(23);
     printText.push_back("CLIBr");
     printText.push_back("Usage: clibr <command> [argument] [filename] [tag]");
     printText.push_back("\u001b" "[36m" "commands:" "\u001b" "[0m");
@@ -54,6 +56,7 @@ void clibr::CommandHelp::_executeInternal() {
 void clibr::CommandHelp::_executeInternalG() {
 
     clibr::ListText printText;
+    printText.reserve(23);
     printText.push_back("CLIBr");
     printText.push_back("Usage: clibr g <argument> <filename> [tag]");
     printText.push_back("\u001b" "[35m" "commands:" "\u001b" "[0m");
@@ -84,6 +87,7 @@ void clibr::CommandHelp::_executeInternalG() {
 void clibr::CommandHelp::_executeInternalN() {
 
     clibr::ListText printText;
+    printText.reserve(17);
     printText.push_back("CLIBr");
     printText.push_back("Usage: clibr n <argument> <filename> [tag]");
     printText.push_back("\u001b" "[32m" "commands:" "\u001b" "[0m");

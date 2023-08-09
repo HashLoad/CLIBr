@@ -10,8 +10,8 @@ bool clibr::CommandInfo::execute(
     const std::string& dirName, const std::string& fileName, clibr::ICli* cli)
 {
     clibr::ListText printText;
+    printText.reserve(13);
     std::string version = "  Version: " + clibr::Utils::version();
-
     printText.push_back(" ______   ____    ____  ________  ______              ______  _____     _____  ");
     printText.push_back("|_   _ `. |_  \\  /   _||_   __  ||_   _ \\           .\' ___  ||_   _|   |_   _| ");
     printText.push_back("  | | `. \\ |   \\/   |    | |_ \\_|  | |_) | _ .--.  / .\'   \\_|  | |       | |   ");

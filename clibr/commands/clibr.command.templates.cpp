@@ -9,6 +9,7 @@ bool clibr::CommandTemplates::execute(
     const std::string& dirName, const std::string& fileName, clibr::ICli* cli)
 {
     clibr::ListText printText;
+    printText.reserve(21);
     printText.push_back("|----------------------|");
     printText.push_back("| CLIBr - Templates    |");
     printText.push_back("|----------------------|-------------------------------------------|");

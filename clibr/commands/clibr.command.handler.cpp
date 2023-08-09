@@ -44,7 +44,7 @@ bool clibr::CommandRouteHandler::execute(
         clibr::Print::printCreate("CREATE", templateFileName, clibr::Utils::getSizeFile(templateFileName));
         // List Update DPR
         std::string update;
-        cli->updates().push_back(update.append("  ")
+        cli->setUpdate(update.append("  ")
             .append(unitName)
             .append(".route.handler in \'src\\modules\\")
             .append(fileName)

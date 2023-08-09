@@ -32,7 +32,10 @@ bool clibr::CommandGenerateProject::execute(
 
     if (!std::filesystem::exists(projectPath))
     {
-        std::filesystem::create_directories(projectPath);
+        if (!std::filesystem::create_directories(projectPath))
+        {
+            return false;
+        }
     }
     sourcePath += "/src/modules/ping";
     // VCL

@@ -17,9 +17,11 @@ namespace clibr
         virtual const std::string& commandExecuted() const = 0;
         virtual const clibr::MapCommands& commands() const = 0;
         virtual const clibr::MapOptions& optionsInternal() const = 0;
-        virtual clibr::MapTags& tags() = 0;
-        virtual clibr::ListUpdates& updates() = 0;
+        virtual const clibr::MapTags& tags() const = 0;
+        virtual const clibr::ListUpdates& updates() const = 0;
         virtual void commandExecuted(const std::string& value) = 0;
+        virtual void setTagValue(const std::string& name, const bool value) = 0;
+        virtual void setUpdate(const std::string& value) = 0;
         virtual ~ICli() = 0;
     };
 

@@ -162,12 +162,22 @@ const clibr::MapOptions& clibr::Cli::optionsInternal() const
     return this->_optionsInternal;
 }
 
-clibr::MapTags& clibr::Cli::tags()
+const clibr::MapTags& clibr::Cli::tags() const 
 {
     return this->_tags;
 }
 
-clibr::ListUpdates& clibr::Cli::updates()
+const clibr::ListUpdates& clibr::Cli::updates() const 
 {
     return this->_updates;
+}
+
+void clibr::Cli::setTagValue(const std::string& name, const bool value)
+{
+    this->_tags[name] = value;
+}
+
+void clibr::Cli::setUpdate(const std::string& value)
+{
+    this->_updates.push_back(value);
 }

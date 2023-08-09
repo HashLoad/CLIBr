@@ -59,7 +59,7 @@ void clibr::cliMain(const int argc, char* argv[])
         }
         else if (cli->tags().contains(item))
         {
-            cli->tags().at(item) = true;
+            cli->setTagValue(item, true);
         }
         else
         {

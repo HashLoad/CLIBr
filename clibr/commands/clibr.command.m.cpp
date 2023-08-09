@@ -29,7 +29,7 @@ bool clibr::CommandModule::execute(
 
     if (!std::filesystem::exists(sourcePath))
     {
-        std::filesystem::create_directories(sourcePath);
+        bool isCreate = std::filesystem::create_directories(sourcePath);
     }
 
     std::string templateFilePath = "";
@@ -63,7 +63,7 @@ bool clibr::CommandModule::execute(
         clibr::Print::printCreate("CREATE", templateFileName, clibr::Utils::getSizeFile(templateFileName));
         // List Update DPR
         std::string update;
-        cli->updates().push_back(update.append("  ")
+        cli->setUpdate(update.append("  ")
             .append(unitName)
             .append(".module in \'src\\modules\\")
             .append(fileName)
@@ -77,7 +77,7 @@ bool clibr::CommandModule::execute(
 
 clibr::CommandModule::~CommandModule() {};
 
-bool clibr::CommandModule::_argGuardExist(ICli* cli)
+bool clibr::CommandModule::_argGuardExist(const ICli* cli)
 {
     bool result;
     if (cli->tags().contains("--guard"))
@@ -95,7 +95,7 @@ bool clibr::CommandModule::_argGuardExist(ICli* cli)
     return result;
 }
 
-std::string clibr::CommandModule::_generateGuardBody(std::string& camelCaseName, ICli* cli)
+std::string clibr::CommandModule::_generateGuardBody(std::string& camelCaseName, const ICli* cli)
 {
     std::string templateFilePath = cli->pathTemp() + "/" + "body.pas";
     std::string templateContent = clibr::Utils::readFromFile(templateFilePath);
@@ -104,7 +104,7 @@ std::string clibr::CommandModule::_generateGuardBody(std::string& camelCaseName,
     return modifiedContent;
 }
 
-std::string clibr::CommandModule::_generateGuardHeader(std::string& camelCaseName, ICli* cli)
+std::string clibr::CommandModule::_generateGuardHeader(std::string& camelCaseName, const ICli* cli)
 {
     std::string templateFilePath = cli->pathTemp() + "/" + "header.pas";
     std::string templateContent = clibr::Utils::readFromFile(templateFilePath);

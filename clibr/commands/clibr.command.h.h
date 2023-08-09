@@ -11,7 +11,8 @@ namespace clibr
     class CommandHelp : public ICommand
     {
     public:
-        bool execute(const std::string& dirName, const std::string& fileName,  ICli* cli) override;
+        bool execute(const std::string& dirName, const std::string& fileName, 
+            ICli* cli) override;
         ~CommandHelp() override;
     private:
         void _executeInternal();

@@ -8,9 +8,20 @@
 bool clibr::CommandGenerateProjectHorse::execute(
     const std::string& dirName, const std::string& fileName, clibr::ICli* cli)
 {
-    std::cout << "version";
+    std::string unitName = clibr::Utils::toLowerCase(fileName);
+    std::string camelCaseName = std::string(1, std::toupper(fileName[0])) + fileName.substr(1);
+    std::string programName = clibr::Utils::regexReplaceAll(camelCaseName, "-", "_");
+    std::string templateFilePath = cli->pathTemp() + "/horse.project.pas";
+    std::string templateFileName = dirName + "/" + unitName + ".dpr";
+    std::string templateContent = clibr::Utils::readFromFile(templateFilePath);
+    std::string modifiedContent = clibr::Utils::replaceString(templateContent, "{programName}", programName);
 
-    return true;
+    bool success = clibr::Utils::writeToFile(templateFileName, modifiedContent);
+    if (success)
+    {
+        clibr::Print::printCreate("CREATE", templateFileName, clibr::Utils::getSizeFile(templateFileName));
+    }
+    return success;
 };
 
 clibr::CommandGenerateProjectHorse::~CommandGenerateProjectHorse(){};

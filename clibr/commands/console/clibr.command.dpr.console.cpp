@@ -17,7 +17,6 @@ bool clibr::CommandGenerateProjectConsole::execute(
     std::string modifiedContent = clibr::Utils::replaceString(templateContent, "{programName}", programName);
     
     bool success = clibr::Utils::writeToFile(templateFileName, modifiedContent);
-    
     if (success)
     {
         clibr::Print::printCreate("CREATE", templateFileName, clibr::Utils::getSizeFile(templateFileName));
