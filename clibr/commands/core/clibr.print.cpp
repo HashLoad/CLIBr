@@ -1,6 +1,6 @@
 #include <iostream>
 #include <string>
-#include "clibr.print.h"
+#include "clibr.print.hpp"
 
 // Definição dos membros estáticos
 const char* clibr::Print::_reset = "\u001b" "[0m";

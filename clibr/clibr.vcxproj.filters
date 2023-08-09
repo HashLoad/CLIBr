@@ -98,73 +98,73 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="clibr.cli.h">
+    <ClInclude Include="clibr.cli.hpp">
       <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>
-    <ClInclude Include="clibr.interfaces.h">
+    <ClInclude Include="clibr.interfaces.hpp">
       <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>
-    <ClInclude Include="clibr.main.h">
+    <ClInclude Include="clibr.main.hpp">
       <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>
-    <ClInclude Include="commands\clibr.command.v.h">
+    <ClInclude Include="commands\clibr.command.v.hpp">
       <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>
-    <ClInclude Include="commands\clibr.command.dpr.h">
+    <ClInclude Include="commands\clibr.command.dpr.hpp">
       <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>
-    <ClInclude Include="commands\clibr.command.all.h">
+    <ClInclude Include="commands\clibr.command.all.hpp">
       <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>
-    <ClInclude Include="commands\clibr.command.c.h">
+    <ClInclude Include="commands\clibr.command.c.hpp">
       <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>
-    <ClInclude Include="commands\clibr.command.h.h">
+    <ClInclude Include="commands\clibr.command.h.hpp">
       <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>
-    <ClInclude Include="commands\clibr.command.handler.h">
+    <ClInclude Include="commands\clibr.command.handler.hpp">
       <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>
-    <ClInclude Include="commands\clibr.command.i.h">
+    <ClInclude Include="commands\clibr.command.i.hpp">
       <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>
-    <ClInclude Include="commands\clibr.command.info.h">
+    <ClInclude Include="commands\clibr.command.info.hpp">
       <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>
-    <ClInclude Include="commands\clibr.command.m.h">
+    <ClInclude Include="commands\clibr.command.m.hpp">
       <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>
-    <ClInclude Include="commands\clibr.command.pipe.h">
+    <ClInclude Include="commands\clibr.command.pipe.hpp">
       <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>
-    <ClInclude Include="commands\clibr.command.r.h">
+    <ClInclude Include="commands\clibr.command.r.hpp">
       <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>
-    <ClInclude Include="commands\clibr.command.s.h">
+    <ClInclude Include="commands\clibr.command.s.hpp">
       <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>
-    <ClInclude Include="commands\clibr.command.templates.h">
+    <ClInclude Include="commands\clibr.command.templates.hpp">
       <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>
-    <ClInclude Include="commands\console\clibr.command.dpr.console.h">
+    <ClInclude Include="commands\console\clibr.command.dpr.console.hpp">
       <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>
-    <ClInclude Include="commands\core\clibr.command.pair.h">
+    <ClInclude Include="commands\core\clibr.command.pair.hpp">
       <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>
-    <ClInclude Include="commands\core\clibr.typedefs.h">
+    <ClInclude Include="commands\core\clibr.typedefs.hpp">
       <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>
-    <ClInclude Include="commands\core\clibr.print.h">
+    <ClInclude Include="commands\core\clibr.print.hpp">
       <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>
-    <ClInclude Include="commands\horse\clibr.command.dpr.horse.h">
+    <ClInclude Include="commands\horse\clibr.command.dpr.horse.hpp">
       <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>
-    <ClInclude Include="commands\horse\clibr.command.handler.horse.h">
+    <ClInclude Include="commands\horse\clibr.command.handler.horse.hpp">
       <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>
-    <ClInclude Include="commands\update\clibr.update.dpr.h">
+    <ClInclude Include="commands\update\clibr.update.dpr.hpp">
       <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>
     <ClInclude Include="commands\vcl\clibr.command.dfm.vcl.h">
@@ -176,7 +176,7 @@
     <ClInclude Include="commands\vcl\clibr.command.pas.vcl.h">
       <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>
-    <ClInclude Include="commands\core\clibr.utils.h">
+    <ClInclude Include="commands\core\clibr.utils.hpp">
       <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>
   </ItemGroup>

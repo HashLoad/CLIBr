@@ -97,9 +97,10 @@ void clibr::cliMain(const int argc, char* argv[])
     {
         isSuccess = updateExecute->execute(dirName, fileName, cli);
     }
-    else
+
+    if (!isSuccess)
     {
-        clibr::Print::printAlert("Run \'clibr --help\' for usage.");
+       clibr::Print::printAlert("Run \'clibr --help\' for usage.");
     }
     options.clear();
     commandOptions.clear();

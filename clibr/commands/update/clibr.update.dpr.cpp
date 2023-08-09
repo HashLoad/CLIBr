@@ -10,7 +10,9 @@
 bool clibr::CommandUpdateDpr::execute(
     const std::string& dirName, const std::string& fileName, clibr::ICli* cli)
 {
-    std::filesystem::path currentDir = std::filesystem::current_path();
+    std::filesystem::path currentDir = std::filesystem::current_path() / dirName;
+    currentDir = std::filesystem::canonical(currentDir);
+
     std::vector<std::filesystem::directory_entry> files;
 
     for (const auto& entry : std::filesystem::directory_iterator(currentDir))
@@ -95,8 +97,11 @@ bool clibr::CommandUpdateDpr::execute(
         outputFile << updatedLine << "\n";
     }
     outputFile.close();
-
-    clibr::Print::printUpdate("UPDATE", "./" + files[0].path().filename().string(), clibr::Utils::getSizeFile(dprFilePath));
+    
+    std::string update;
+    clibr::Print::printUpdate("UPDATE", update.append(dirName)
+        .append("/")
+        .append(files[0].path().filename().string()), clibr::Utils::getSizeFile(dprFilePath));
 
     return true;
 }

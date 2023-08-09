@@ -9,6 +9,11 @@
 bool clibr::CommandTransformPipe::execute(
     const std::string& dirName, const std::string& fileName, clibr::ICli* cli)
 {
+    if (fileName.empty())
+    {
+        clibr::Print::printAlert("Invalid parameters!");
+        return false;
+    }
     std::string unitName = clibr::Utils::toLowerCase(fileName);
     std::string camelCaseName = std::string(1, std::toupper(fileName[0])) + fileName.substr(1);
     std::string className = "TParse" + camelCaseName + "Pipe";
@@ -17,12 +22,6 @@ bool clibr::CommandTransformPipe::execute(
     if (sourcePath.empty() || sourcePath == ".")
     {
         sourcePath = "./src/pipes/" + fileName;
-    }
-
-    if (fileName.empty())
-    {
-        clibr::Print::printAlert("Invalid parameters!");
-        return false;
     }
 
     if (std::filesystem::exists(sourcePath))

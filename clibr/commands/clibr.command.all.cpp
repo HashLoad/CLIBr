@@ -10,6 +10,11 @@
 bool clibr::CommandAll::execute(
     const std::string& dirName, const std::string& fileName, clibr::ICli* cli)
 {
+    if (fileName.empty())
+    {
+        clibr::Print::printAlert("Invalid parameters!");
+        return false;
+    }
     std::string allPath = dirName;
     std::string sourcePath = dirName;
     bool isHorse = false;
@@ -18,12 +23,6 @@ bool clibr::CommandAll::execute(
     {
         allPath = "./src/";
         sourcePath = "./src";
-    }
-
-    if (fileName.empty())
-    {
-        clibr::Print::printAlert("Invalid parameters!");
-        return false;
     }
 
     if (!std::filesystem::exists(allPath))

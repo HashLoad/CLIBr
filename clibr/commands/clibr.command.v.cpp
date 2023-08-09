@@ -1,9 +1,9 @@
 #include <iostream>
 #include <string>
-#include "clibr.command.v.h"
-#include "core/clibr.print.h"
-#include "core/clibr.utils.h"
-#include "../clibr.interfaces.h"
+#include "clibr.command.v.hpp"
+#include "core/clibr.print.hpp"
+#include "core/clibr.utils.hpp"
+#include "../clibr.interfaces.hpp"
 
 bool clibr::CommandVersion::execute(
     const std::string& dirName, const std::string& fileName, clibr::ICli* cli)

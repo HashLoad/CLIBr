@@ -13,22 +13,15 @@
 bool clibr::CommandGenerateProject::execute(
     const std::string& dirName, const std::string& fileName, clibr::ICli* cli)
 {
-    std::string projectPath = dirName;
-    std::string sourcePath = dirName;
-    bool isHorse = false;
-    bool isVCL = false;
-
-    if (sourcePath.empty())
-    {
-        projectPath = "./";
-        sourcePath = ".";
-    }
-
     if (fileName.empty())
     {
         clibr::Print::printAlert("Invalid parameters!");
         return false;
     }
+    std::string projectPath = dirName;
+    std::string sourcePath = dirName;
+    bool isHorse = false;
+    bool isVCL = false;
 
     if (!std::filesystem::exists(projectPath))
     {

@@ -1,5 +1,5 @@
-#include "../../clibr.interfaces.h"
-#include "clibr.command.pair.h"
+#include "../../clibr.interfaces.hpp"
+#include "clibr.command.pair.hpp"
 
 clibr::CommandPair::CommandPair() : command(nullptr) {}
 clibr::CommandPair::CommandPair(clibr::ICommand* value) : command(value) {}
