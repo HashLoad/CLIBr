@@ -19,7 +19,7 @@
 #include "commands/clibr.command.i.hpp"
 #include "commands/clibr.command.s.hpp"
 #include "commands/clibr.command.r.hpp"
-#include "clibr.cli.h"
+#include "clibr.cli.hpp"
 
 clibr::Cli::Cli(const std::string& pathTemp) : _pathTemp(pathTemp)
 {
