@@ -26,8 +26,12 @@ Installation:
 ### > New
 This command initialize a new project.
 ```
-clibr new app my_api
+clibr new ./apiapp/api
 ```
+<p align="center">
+  <img src="assets/new.jpg" alt="super CLI" width="100%">
+</p> 
+
 ###### Aliases: n
 
 ### > Informations
