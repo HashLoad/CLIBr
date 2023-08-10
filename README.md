@@ -19,7 +19,7 @@ Installation:
 
 ## Available Commands
 
-### Help
+### > Help
 This command initialize a new project.
 ```
 clibr --help
