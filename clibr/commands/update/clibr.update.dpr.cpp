@@ -45,8 +45,8 @@ bool clibr::CommandUpdateDpr::execute(
         lines.push_back(line);
     }
 
-    int usesIndex{ -1 };
-    for (int iFor = 0; iFor < lines.size(); iFor++) 
+    intptr_t usesIndex{ -1 };
+    for (size_t iFor = 0; iFor < lines.size(); iFor++) 
     {
         if (lines[iFor].find("uses") != std::string::npos) 
         {
@@ -61,8 +61,8 @@ bool clibr::CommandUpdateDpr::execute(
         return false;
     }
 
-    int semicolonIndex{ -1 };
-    for (int iFor = usesIndex + 1; iFor < lines.size(); iFor++) 
+    intptr_t semicolonIndex{ -1 };
+    for (size_t iFor = usesIndex + 1; iFor < lines.size(); iFor++) 
     {
         if (lines[iFor].find(';') != std::string::npos)
         {
@@ -70,7 +70,7 @@ bool clibr::CommandUpdateDpr::execute(
             break;
         }
     }
-
+    
     if (semicolonIndex == -1)
     {
         clibr::Print::printAlert("Error: Semicolon not found after the 'uses' clause in the DPR file.");

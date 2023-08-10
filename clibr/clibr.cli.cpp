@@ -25,54 +25,54 @@ clibr::Cli::Cli(const std::string& pathTemp) : _pathTemp(pathTemp)
 {
     this->_optionsInfos = 
     { 
-        { "version", new clibr::CommandPair(new clibr::CommandVersion()) },
-        { "v", new clibr::CommandPair(new clibr::CommandVersion()) },
-        { "info", new clibr::CommandPair(new clibr::CommandInfo()) },
-        { "i", new clibr::CommandPair(new clibr::CommandInfo()) },
-        { "templates", new clibr::CommandPair(new clibr::CommandTemplates()) },
-        { "t", new clibr::CommandPair(new clibr::CommandTemplates()) },
+        { "version", new clibr::CommandPair(std::make_shared<clibr::CommandVersion>()) },
+        { "v", new clibr::CommandPair(std::make_shared<clibr::CommandVersion>()) },
+        { "info", new clibr::CommandPair(std::make_shared<clibr::CommandInfo>()) },
+        { "i", new clibr::CommandPair(std::make_shared<clibr::CommandInfo>()) },
+        { "templates", new clibr::CommandPair(std::make_shared<clibr::CommandTemplates>()) },
+        { "t", new clibr::CommandPair(std::make_shared<clibr::CommandTemplates>()) },
     };
 
     this->_optionsHelp = 
     {
-        { "--help", new clibr::CommandPair(new clibr::CommandHelp()) },
-        { "-h", new clibr::CommandPair(new clibr::CommandHelp()) },
+        { "--help", new clibr::CommandPair(std::make_shared<clibr::CommandHelp>()) },
+        { "-h", new clibr::CommandPair(std::make_shared<clibr::CommandHelp>()) },
     };
 
     this->_optionsNew = 
     {
-        { "application", new clibr::CommandPair(new clibr::CommandGenerateProject()) },
-        { "app", new clibr::CommandPair(new clibr::CommandGenerateProject()) },
-        { "new", new clibr::CommandPair(new clibr::CommandGenerateProject()) },
-        { "--help", new clibr::CommandPair(new clibr::CommandHelp()) },
-        { "-h", new clibr::CommandPair(new clibr::CommandHelp()) },
+        { "application", new clibr::CommandPair(std::make_shared<clibr::CommandGenerateProject>()) },
+        { "app", new clibr::CommandPair(std::make_shared<clibr::CommandGenerateProject>()) },
+        { "new", new clibr::CommandPair(std::make_shared<clibr::CommandGenerateProject>()) },
+        { "--help", new clibr::CommandPair(std::make_shared<clibr::CommandHelp>()) },
+        { "-h", new clibr::CommandPair(std::make_shared<clibr::CommandHelp>()) },
     };
 
     this->_optionsGenerate = 
     {
-        { "module", new clibr::CommandPair(new clibr::CommandModule()) },
-        { "m", new clibr::CommandPair(new clibr::CommandModule()) },
-        { "controller", new clibr::CommandPair(new clibr::CommandController()) },
-        { "c", new clibr::CommandPair(new clibr::CommandController()) },
-        { "service", new clibr::CommandPair(new clibr::CommandService()) },
-        { "s", new clibr::CommandPair(new clibr::CommandService()) },
-        { "repository", new clibr::CommandPair(new clibr::CommandRepository()) },
-        { "r", new clibr::CommandPair(new clibr::CommandRepository()) },
-        { "infra", new clibr::CommandPair(new clibr::CommandInfra()) },
-        { "i", new clibr::CommandPair(new clibr::CommandInfra()) },
-        { "pipe", new clibr::CommandPair(new clibr::CommandTransformPipe()) },
-        { "p", new clibr::CommandPair(new clibr::CommandTransformPipe()) },
-        { "all", new clibr::CommandPair(new clibr::CommandAll()) },
-        { "--help", new clibr::CommandPair(new clibr::CommandHelp()) },
-        { "-h", new clibr::CommandPair(new clibr::CommandHelp()) },
+        { "module", new clibr::CommandPair(std::make_shared<clibr::CommandModule>()) },
+        { "m", new clibr::CommandPair(std::make_shared<clibr::CommandModule>()) },
+        { "controller", new clibr::CommandPair(std::make_shared<clibr::CommandController>()) },
+        { "c", new clibr::CommandPair(std::make_shared<clibr::CommandController>()) },
+        { "service", new clibr::CommandPair(std::make_shared<clibr::CommandService>()) },
+        { "s", new clibr::CommandPair(std::make_shared<clibr::CommandService>()) },
+        { "repository", new clibr::CommandPair(std::make_shared<clibr::CommandRepository>()) },
+        { "r", new clibr::CommandPair(std::make_shared<clibr::CommandRepository>()) },
+        { "infra", new clibr::CommandPair(std::make_shared<clibr::CommandInfra>()) },
+        { "i", new clibr::CommandPair(std::make_shared<clibr::CommandInfra>()) },
+        { "pipe", new clibr::CommandPair(std::make_shared<clibr::CommandTransformPipe>()) },
+        { "p", new clibr::CommandPair(std::make_shared<clibr::CommandTransformPipe>()) },
+        { "all", new clibr::CommandPair(std::make_shared<clibr::CommandAll>()) },
+        { "--help", new clibr::CommandPair(std::make_shared<clibr::CommandHelp>()) },
+        { "-h", new clibr::CommandPair(std::make_shared<clibr::CommandHelp>()) },
     };
 
     this->_optionsInternal =
     {
-        { "handler", new clibr::CommandPair(new clibr::CommandRouteHandler()) },
-        { "horse-app", new clibr::CommandPair(new clibr::CommandGenerateProjectHorse()) },
-        { "horse-handler", new clibr::CommandPair(new clibr::CommandRouteHandlerHorse()) },
-        { "vcl-app", new clibr::CommandPair(new clibr::CommandGenerateProjectVCL()) },
+        { "handler", new clibr::CommandPair(std::make_shared<clibr::CommandRouteHandler>()) },
+        { "horse-app", new clibr::CommandPair(std::make_shared<clibr::CommandGenerateProjectHorse>()) },
+        { "horse-handler", new clibr::CommandPair(std::make_shared<clibr::CommandRouteHandlerHorse>()) },
+        { "vcl-app", new clibr::CommandPair(std::make_shared<clibr::CommandGenerateProjectVCL>()) },
     };
 
     this->_commands = 

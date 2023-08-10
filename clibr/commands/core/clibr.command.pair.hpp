@@ -3,6 +3,7 @@
 #ifndef COMMANDPAIR_H
 #define COMMANDPAIR_H
 
+#include <memory>
 #include "../../clibr.interfaces.hpp"
 
 namespace clibr
@@ -11,13 +12,13 @@ namespace clibr
 	{
 	public:
 		CommandPair();
-		CommandPair(ICommand* value);
-		~CommandPair();
+		CommandPair(std::shared_ptr<ICommand> value);
+		~CommandPair() = default;
 
-		ICommand* getCommand();
-		void setCommand(ICommand* value);
+		std::shared_ptr<ICommand> getCommand();
+		void setCommand(std::shared_ptr<ICommand> value);
 	private:
-		ICommand* command;
+		std::shared_ptr<ICommand> command;
 	};
 }
 

@@ -70,8 +70,8 @@ void clibr::cliMain(const int argc, char* argv[])
             continue;
         }
 
-        clibr::ICommand* command{ commandOptions[item]->getCommand() };
-        if (auto specificCommand = dynamic_cast<clibr::ICommand*>(command))
+        std::shared_ptr<ICommand> command{ commandOptions[item]->getCommand() };
+        if (auto specificCommand = std::dynamic_pointer_cast<ICommand>(command))
         {
             isSuccess = specificCommand->execute(dirName, fileName, cli.get());
             if (isSuccess)

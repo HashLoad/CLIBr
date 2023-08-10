@@ -78,14 +78,14 @@ void clibr::CommandGenerateProject::_createModule(const std::string& dirName,
     const std::string& fileName, clibr::ICli* cli)
 {
     clibr::CommandPair* commandPair{ cli->commands().at("g").at("m") };
-    clibr::ICommand* command{ commandPair->getCommand() };
+    std::shared_ptr<ICommand> command{ commandPair->getCommand() };
     command->execute(dirName, fileName, cli);
 }
 
 void clibr::CommandGenerateProject::_createController(const std::string& dirName, 
     const std::string& fileName, clibr::ICli* cli) {
     clibr::CommandPair* commandPair{ cli->commands().at("g").at("c") };
-    clibr::ICommand* command{ commandPair->getCommand() };
+    std::shared_ptr<ICommand> command{ commandPair->getCommand() };
     command->execute(dirName, fileName, cli);
 }
 
@@ -93,7 +93,7 @@ void clibr::CommandGenerateProject::_createService(const std::string& dirName,
     const std::string& fileName, clibr::ICli* cli)
 {
     clibr::CommandPair* commandPair{ cli->commands().at("g").at("s") };
-    clibr::ICommand* command{ commandPair->getCommand() };
+    std::shared_ptr<ICommand> command{ commandPair->getCommand() };
     command->execute(dirName, fileName, cli);
 }
 
@@ -101,7 +101,7 @@ void clibr::CommandGenerateProject::_createProjectHorse(const std::string& dirNa
     const std::string& fileName, clibr::ICli* cli)
 {
     clibr::CommandPair* commandPair{ cli->optionsInternal().at("horse-app") };
-    clibr::ICommand* command{ commandPair->getCommand() };
+    std::shared_ptr<ICommand> command{ commandPair->getCommand() };
     command->execute(dirName, fileName, cli);
 }
 
@@ -109,7 +109,7 @@ void clibr::CommandGenerateProject::_createRouteHandleHorse(const std::string& d
     const std::string& fileName, clibr::ICli* cli)
 {
     clibr::CommandPair* commandPair{ cli->optionsInternal().at("horse-handler") };
-    clibr::ICommand* command{ commandPair->getCommand() };
+    std::shared_ptr<ICommand> command{ commandPair->getCommand() };
     command->execute(dirName, fileName, cli);
 }
 
@@ -117,7 +117,7 @@ void clibr::CommandGenerateProject::_createRouteHandle(const std::string& dirNam
     const std::string& fileName, clibr::ICli* cli)
 {
     clibr::CommandPair* commandPair{ cli->optionsInternal().at("handler") };
-    clibr::ICommand* command{ commandPair->getCommand() };
+    std::shared_ptr<ICommand> command{ commandPair->getCommand() };
     command->execute(dirName, fileName, cli);
 }
 
@@ -127,7 +127,7 @@ void clibr::CommandGenerateProject::_createProjectVCL(const std::string& dirName
     clibr::CommandGenerateFormVCL formVCL;
     clibr::CommandGenerateUnitVCL unitVCL;
     clibr::CommandPair* commandPair{ cli->optionsInternal().at("vcl-app") };
-    clibr::ICommand* command{ commandPair->getCommand() };
+    std::shared_ptr<ICommand> command{ commandPair->getCommand() };
 
     command->execute(dirName, fileName, cli);
     formVCL.execute(dirName, fileName, cli);

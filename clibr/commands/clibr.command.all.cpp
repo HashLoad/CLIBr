@@ -49,7 +49,7 @@ void clibr::CommandAll::_createModule(const std::string& dirName,
     const std::string& fileName, clibr::ICli* cli) 
 {
     clibr::CommandPair* commandPair{ cli->commands().at("g").at("m") };
-    clibr::ICommand* command{ commandPair->getCommand() };
+    std::shared_ptr<ICommand> command{ commandPair->getCommand() };
     bool isSuccess = command->execute(dirName, fileName, cli);
 }
 
@@ -57,7 +57,7 @@ void clibr::CommandAll::_createController(const std::string& dirName,
     const std::string& fileName, clibr::ICli* cli) 
 {
     clibr::CommandPair* commandPair{ cli->commands().at("g").at("c") };
-    clibr::ICommand* command{ commandPair->getCommand() };
+    std::shared_ptr<ICommand> command{ commandPair->getCommand() };
     bool isSuccess = command->execute(dirName, fileName, cli);
 }
 
@@ -65,7 +65,7 @@ void clibr::CommandAll::_createService(const std::string& dirName,
     const std::string& fileName, clibr::ICli* cli) 
 {
     clibr::CommandPair* commandPair{ cli->commands().at("g").at("s") };
-    clibr::ICommand* command{ commandPair->getCommand() };
+    std::shared_ptr<ICommand> command{ commandPair->getCommand() };
     bool isSuccess = command->execute(dirName, fileName, cli);
 }
 
@@ -73,7 +73,7 @@ void clibr::CommandAll::_createRouteHandleHorse(const std::string& dirName,
     const std::string& fileName, clibr::ICli* cli) 
 {
     clibr::CommandPair* commandPair{ cli->optionsInternal().at("horse-handler") };
-    clibr::ICommand* command{ commandPair->getCommand() };
+    std::shared_ptr<ICommand> command{ commandPair->getCommand() };
     bool isSuccess = command->execute(dirName, fileName, cli);
 }
 
@@ -81,6 +81,6 @@ void clibr::CommandAll::_createRouteHandle(const std::string& dirName,
     const std::string& fileName, clibr::ICli* cli) 
 {
     clibr::CommandPair* commandPair{ cli->optionsInternal().at("handler") };
-    clibr::ICommand* command{ commandPair->getCommand() };
+    std::shared_ptr<ICommand> command{ commandPair->getCommand() };
     bool isSuccess = command->execute(dirName, fileName, cli);
 }
