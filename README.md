@@ -20,7 +20,7 @@ Installation:
 ## Available Commands
 
 ### > Help
-This command initialize a new project.
+This is a helper for clibr.
 ```
 clibr --help
 ```
@@ -28,7 +28,7 @@ clibr --help
   <img src="assets/help.jpg" alt="super CLI" width="100%">
 </p> 
 
-### > New
+### > New project
 This command initialize a new project.
 ```
 clibr new ./appapi/api
@@ -36,7 +36,6 @@ clibr new ./appapi/api
 <p align="center">
   <img src="assets/new.jpg" alt="super CLI" width="100%">
 </p> 
-
 ###### Aliases: n
 
 ### > Informations
@@ -44,6 +43,9 @@ This command show the client informations
 ```
 clibr info
 ```
+<p align="center">
+  <img src="assets/info.jpg" alt="super CLI" width="100%">
+</p> 
 ###### Aliases: i
 
 ### > Version
@@ -61,22 +63,9 @@ This flag defines new project partner Horse or VCL
 clibr new app my_api --horse
 clibr new app my_api --vcl
 ```
-### > Help
+### > Help command
 This is a helper for clibr. Use `clibr <command> --help` for more information about a command.
 ```
-clibr --help
+clibr new --help
 ```
 ###### Aliases: -h
-
-## Another commands
-```
-generate           Generate files handler/module/controller/service
-```
-###### Aliases: g
-
-## Samples
-```
-clibr g module product
-clibr g controller product
-clibr g service product
-```
