@@ -51,9 +51,9 @@ clibr info
 ### > Version
 This command show the client version
 ```
-clibr --version
+clibr version
 ```
-###### Aliases: -v
+###### Aliases: v
 
 ## Flags
 
