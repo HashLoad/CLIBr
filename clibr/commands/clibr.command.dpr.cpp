@@ -32,16 +32,10 @@ bool clibr::CommandGenerateProject::execute(
 
     const clibr::MapTags& tags{ cli->tags() };
     // VCL
-    bool isVCL{ false };
-    if (tags.contains("--vcl")) {
-        isVCL = cli->tags().at("--vcl");
-    }
+    bool isVCL{ cli->tags().at("--vcl") };
  
     // Horse
-    bool isHorse{ false };
-    if (tags.contains("--horse")) {
-        isHorse = cli->tags().at("--horse");
-    }
+    bool isHorse{ cli->tags().at("--horse") };
  
     if (isHorse) {
         _createProjectHorse(projectPath, fileName, cli);

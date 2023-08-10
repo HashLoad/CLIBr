@@ -75,14 +75,6 @@ clibr::Cli::Cli(const std::string& pathTemp) : _pathTemp(pathTemp)
         { "vcl-app", new clibr::CommandPair(new clibr::CommandGenerateProjectVCL()) },
     };
 
-    this->_tags = 
-    {
-        { "-gu", false },
-        { "--guard", false },
-        { "--horse", false },
-        { "--vcl", false },
-    };
-
     this->_commands = 
     {
         { "new", _optionsNew },
@@ -97,6 +89,14 @@ clibr::Cli::Cli(const std::string& pathTemp) : _pathTemp(pathTemp)
         { "v", _optionsInfos },
         { "--help", _optionsHelp },
         { "-h", _optionsHelp },
+    };
+
+    this->_tags =
+    {
+        { "-gu", false },
+        { "--guard", false },
+        { "--horse", false },
+        { "--vcl", false },
     };
 }
 

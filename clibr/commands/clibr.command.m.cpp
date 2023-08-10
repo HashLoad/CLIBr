@@ -71,20 +71,7 @@ clibr::CommandModule::~CommandModule() {};
 bool clibr::CommandModule::_argGuardExist(const ICli* cli)
 {
     const clibr::MapTags& tags = cli->tags();
-    bool result;
-    if (tags.contains("--guard"))
-    {
-        result = tags.at("--guard");
-    }
-    else if (tags.contains("-gu"))
-    {
-        result = tags.at("-gu");
-    }
-    else
-    {
-        result = false;
-    }
-    return result;
+    return (tags.at("--guard") == true || tags.at("--gu") == true);
 }
 
 std::string clibr::CommandModule::_generateGuardBody(const std::string& camelCaseName, const ICli* cli)

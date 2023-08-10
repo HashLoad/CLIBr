@@ -31,10 +31,7 @@ bool clibr::CommandAll::execute(
     sourcePath += "/modules/" + fileName;
 
     // Horse
-    bool isHorse{ false };
-    if (cli->tags().contains("--horse")) {
-        isHorse = cli->tags().at("--horse");
-    }
+    bool isHorse{ cli->tags().at("--horse") };
 
     isHorse ? _createRouteHandleHorse(sourcePath, fileName, cli) : 
               _createRouteHandle(sourcePath, fileName, cli);
