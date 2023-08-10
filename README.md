@@ -36,6 +36,7 @@ clibr new ./appapi/api
 <p align="center">
   <img src="assets/new.jpg" alt="super CLI" width="100%">
 </p> 
+
 ###### Aliases: n
 
 ### > Informations
@@ -46,6 +47,7 @@ clibr info
 <p align="center">
   <img src="assets/info.jpg" alt="super CLI" width="100%">
 </p> 
+
 ###### Aliases: i
 
 ### > Version
@@ -53,6 +55,7 @@ This command show the client version
 ```
 clibr --version
 ```
+
 ###### Aliases: -v
 
 ## Flags
@@ -63,9 +66,12 @@ This flag defines new project partner Horse or VCL
 clibr new app my_api --horse
 clibr new app my_api --vcl
 ```
+
 ### > Help command
 This is a helper for clibr. Use `clibr <command> --help` for more information about a command.
 ```
 clibr new --help
 ```
+
 ###### Aliases: -h
+
