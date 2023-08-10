@@ -8,7 +8,7 @@ CLIBr is a command-line tool that assists in initializing, developing, and maint
 
 Project developed in C++ and code analyzed using a static analysis guideline tool. I appreciate the PVS-Studio team for providing a license for open-source projects' usage.
 
-## SAST Tools
+### SAST Tools
 [PVS-Studio]( https://pvs-studio.com/en/pvs-studio/?utm_source=website&utm_medium=github&utm_campaign=open_source ) - static analyzer for C, C++, C#, and Java code.
 
 ### Getting started
@@ -17,11 +17,16 @@ Installation:
  * Download [setup](https://github.com/HashLoad/clibr/releases)
  * Just type `clibr` in cmd
 
-## Help
+## Available Commands
+
+### Help
+This command initialize a new project.
+```
+clibr --help
+```
 <p align="center">
   <img src="assets/help.jpg" alt="super CLI" width="100%">
 </p> 
-## Available Commands
 
 ### > New
 This command initialize a new project.
