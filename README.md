@@ -33,22 +33,20 @@ This command initialize a new project.
 ```
 clibr new ./appapi/api
 ```
+###### Aliases: n
 <p align="center">
   <img src="assets/new.jpg" alt="super CLI" width="100%">
 </p> 
-
-###### Aliases: n
 
 ### > Informations
 This command show the client informations
 ```
 clibr info
 ```
+###### Aliases: i
 <p align="center">
   <img src="assets/info.jpg" alt="super CLI" width="100%">
 </p> 
-
-###### Aliases: i
 
 ### > Version
 This command show the client version
