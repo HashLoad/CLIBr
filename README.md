@@ -36,7 +36,6 @@ clibr new ./appapi/api
 <p align="center">
   <img src="assets/new.jpg" alt="super CLI" width="100%">
 </p> 
-
 ###### Aliases: n
 
 ### > Informations
@@ -47,7 +46,6 @@ clibr info
 <p align="center">
   <img src="assets/info.jpg" alt="super CLI" width="100%">
 </p> 
-
 ###### Aliases: i
 
 ### > Version
@@ -55,7 +53,6 @@ This command show the client version
 ```
 clibr --version
 ```
-
 ###### Aliases: -v
 
 ## Flags
@@ -72,6 +69,5 @@ This is a helper for clibr. Use `clibr <command> --help` for more information ab
 ```
 clibr new --help
 ```
-
 ###### Aliases: -h
 
