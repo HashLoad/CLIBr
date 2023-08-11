@@ -27,7 +27,6 @@ namespace clibr
 	{
 		std::shared_ptr<ICommand> command;
 
-		CommandPair();
 		CommandPair(std::shared_ptr<ICommand> value);
 		~CommandPair() = default;
 

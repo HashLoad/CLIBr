@@ -4,7 +4,6 @@
 
 namespace clibr 
 {
-	CommandPair::CommandPair() : command(nullptr) {}
 	CommandPair::CommandPair(std::shared_ptr<ICommand> value) : command(value) {}
 
 	std::shared_ptr<ICommand> CommandPair::getCommand()
