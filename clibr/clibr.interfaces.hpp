@@ -74,7 +74,7 @@ namespace clibr
         /// <summary>
         /// Virtual destructor to ensure proper destruction of derived classes.
         /// </summary>
-        virtual ~ICli() = 0;
+        virtual ~ICli() = default;
     };
 
     /// <summary>
@@ -95,7 +95,7 @@ namespace clibr
         /// <summary>
         /// Virtual destructor to ensure proper destruction of derived classes.
         /// </summary>
-        virtual ~ICommand() = 0;
+        virtual ~ICommand() = default;
     };
 }
 

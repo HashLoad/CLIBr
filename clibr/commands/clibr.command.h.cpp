@@ -22,8 +22,6 @@ namespace clibr
         return true;
     };
 
-    CommandHelp::~CommandHelp() {};
-
     void CommandHelp::_executeInternal() {
 
         ListText printText;

@@ -30,7 +30,7 @@ namespace clibr
         {
             std::filesystem::create_directories(sourcePath);
         }
-        std::string templateFilePath{ cli->pathTemp() + "/service.pas" };
+        std::string templateFilePath{ cli->pathTemp() + "/service.pasgen" };
         std::string templateFileName{ sourcePath + "/" + unitName + ".service.pas" };
         std::string templateContent{ Utils::readFromFile(templateFilePath) };
         std::string modifiedContent{ Utils::replaceString(templateContent, "{unitName}", unitName) };
@@ -52,6 +52,4 @@ namespace clibr
         }
         return isSuccess;
     };
-
-    CommandService::~CommandService() {};
 }

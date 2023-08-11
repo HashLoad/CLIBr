@@ -61,8 +61,6 @@ namespace clibr
         return true;
     };
 
-    CommandGenerateProject::~CommandGenerateProject() {};
-
     void CommandGenerateProject::_createProject(const std::string& dirName,
         const std::string& fileName, ICli* cli)
     {

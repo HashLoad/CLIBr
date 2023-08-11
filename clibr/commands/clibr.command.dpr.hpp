@@ -13,7 +13,7 @@ namespace clibr
     public:
         bool execute(const std::string& dirName, const std::string& fileName,
             ICli* cli) override;
-        ~CommandGenerateProject() override;
+        ~CommandGenerateProject() override = default;
     private:
         void _createProject(const std::string& dirName, const std::string& fileName, ICli* cli);
         void _createAppModule(const std::string& dirName, const std::string& fileName, ICli* cli);

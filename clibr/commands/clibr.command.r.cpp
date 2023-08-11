@@ -14,6 +14,4 @@ namespace clibr
 
         return true;
     };
-
-    CommandRepository::~CommandRepository() {};
 }

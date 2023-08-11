@@ -45,8 +45,6 @@ namespace clibr
         return true;
     };
 
-    CommandAll::~CommandAll() {};
-
     void CommandAll::_createModule(const std::string& dirName,
         const std::string& fileName, ICli* cli)
     {

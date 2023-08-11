@@ -13,7 +13,7 @@ namespace clibr
     public:
         bool execute(const std::string& dirName, const std::string& fileName, 
             ICli* cli) override;
-        ~CommandModule() override;
+        ~CommandModule() override = default;
     private:
       bool _argGuardExist(const ICli* cli);
       std::string _generateGuardBody(const std::string& camelCaseName, const ICli* cli);

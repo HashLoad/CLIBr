@@ -31,7 +31,7 @@ namespace clibr
             std::filesystem::create_directories(sourcePath);
         }
 
-        std::string templateFilePath{ cli->pathTemp() + "/controller.pas" };
+        std::string templateFilePath{ cli->pathTemp() + "/controller.pasgen" };
         std::string templateFileName{ sourcePath + "/" + unitName + ".controller.pas" };
         std::string templateContent{ Utils::readFromFile(templateFilePath) };
         std::string modifiedContent{ Utils::replaceString(templateContent, "{unitName}", unitName) };
@@ -54,6 +54,4 @@ namespace clibr
         }
         return isSuccess;
     };
-
-    CommandController::~CommandController() {};
 }

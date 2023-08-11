@@ -13,7 +13,7 @@ namespace clibr
     public:
         bool execute(const std::string& dirName, const std::string& fileName,
             ICli* cli) override;
-        ~CommandRouteHandler() override;
+        ~CommandRouteHandler() override = default;
     };
 }
 

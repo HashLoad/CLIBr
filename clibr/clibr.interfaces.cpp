@@ -2,6 +2,5 @@
 
 namespace clibr
 {
-	ICommand::~ICommand() {};
-	ICli::~ICli() {};
+
 }

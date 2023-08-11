@@ -34,8 +34,8 @@ namespace clibr
         }
 
         std::string templateFilePath{ "" };
-        isAppModule ? templateFilePath = cli->pathTemp() + "/module.app.pas" :
-            templateFilePath = cli->pathTemp() + "/module.pas";
+        isAppModule ? templateFilePath = cli->pathTemp() + "/module.app.pasgen" :
+            templateFilePath = cli->pathTemp() + "/module.pasgen";
         std::string templateFileName{ sourcePath + "/" + unitName + ".module.pas" };
         std::string templateContent{ Utils::readFromFile(templateFilePath) };
         std::string modifiedContent{ Utils::replaceString(templateContent, "{moduleName}", className) };
@@ -68,8 +68,6 @@ namespace clibr
         return success;
     };
 
-    CommandModule::~CommandModule() {};
-
     bool CommandModule::_argGuardExist(const ICli* cli)
     {
         const MapTags& tags = cli->tags();
@@ -78,7 +76,7 @@ namespace clibr
 
     std::string CommandModule::_generateGuardBody(const std::string& camelCaseName, const ICli* cli)
     {
-        std::string templateFilePath = cli->pathTemp() + "/" + "body.pas";
+        std::string templateFilePath = cli->pathTemp() + "/" + "body.pasgen";
         std::string templateContent = Utils::readFromFile(templateFilePath);
         std::string modifiedContent = Utils::replaceString(templateContent, "{className}", "T" + camelCaseName);
 
@@ -87,7 +85,7 @@ namespace clibr
 
     std::string CommandModule::_generateGuardHeader(const std::string& camelCaseName, const ICli* cli)
     {
-        std::string templateFilePath = cli->pathTemp() + "/" + "header.pas";
+        std::string templateFilePath = cli->pathTemp() + "/" + "header.pasgen";
         std::string templateContent = Utils::readFromFile(templateFilePath);
         std::string modifiedContent = Utils::replaceString(templateContent, "{className}", "T" + camelCaseName);
 

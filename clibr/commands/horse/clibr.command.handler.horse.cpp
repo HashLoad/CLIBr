@@ -31,7 +31,7 @@ namespace clibr
             std::filesystem::create_directories(sourcePath);
         }
 
-        std::string templateFilePath{ cli->pathTemp() + "/horse.handler.pas" };
+        std::string templateFilePath{ cli->pathTemp() + "/horse.handler.pasgen" };
         std::string templateFileName{ sourcePath + "/" + unitName + ".route.handler.pas" };
         std::string templateContent{ Utils::readFromFile(templateFilePath) };
         std::string modifiedContent{ Utils::replaceString(templateContent, "{unitName}", unitName) };
@@ -54,6 +54,4 @@ namespace clibr
         }
         return isSuccess;
     };
-
-    CommandRouteHandlerHorse::~CommandRouteHandlerHorse() {};
 }

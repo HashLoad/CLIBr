@@ -13,7 +13,7 @@ namespace clibr
         std::string unitName{ Utils::toLowerCase(fileName) };
         std::string camelCaseName{ std::string(1, std::toupper(fileName[0])) + fileName.substr(1) };
         std::string programName{ Utils::regexReplaceAll(camelCaseName, "-", "_") };
-        std::string templateFilePath{ cli->pathTemp() + "/horse.project.pas" };
+        std::string templateFilePath{ cli->pathTemp() + "/horse.project.pasgen" };
         std::string templateFileName{ dirName + "/" + unitName + ".dpr" };
         std::string templateContent{ Utils::readFromFile(templateFilePath) };
         std::string modifiedContent{ Utils::replaceString(templateContent, "{programName}", programName) };
@@ -25,6 +25,4 @@ namespace clibr
         }
         return isSuccess;
     };
-
-    CommandGenerateProjectHorse::~CommandGenerateProjectHorse() {};
 }

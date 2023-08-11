@@ -14,6 +14,4 @@ namespace clibr
         Print::printVersion(version);
         return true;
     };
-
-    CommandVersion::~CommandVersion() {};
 }

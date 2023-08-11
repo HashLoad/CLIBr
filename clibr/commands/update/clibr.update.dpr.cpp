@@ -106,6 +106,4 @@ namespace clibr
 
         return true;
     }
-
-    CommandUpdateDpr::~CommandUpdateDpr() {};
 }

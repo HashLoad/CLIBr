@@ -13,7 +13,7 @@ namespace clibr
     public:
         bool execute(const std::string& dirName, const std::string& fileName,
             ICli* cli) override;
-        ~CommandAll() override;
+        ~CommandAll() override = default;
     private:
         void _createModule(const std::string& dirName, const std::string& fileName, clibr::ICli* cli);
         void _createController(const std::string& dirName, const std::string& fileName, clibr::ICli* cli);

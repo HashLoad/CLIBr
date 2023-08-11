@@ -31,6 +31,4 @@ namespace clibr
         Print::printHelp(Utils::join(printText, '\n'));
         return true;
     };
-
-    CommandInfo::~CommandInfo() {};
 }
