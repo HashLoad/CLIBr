@@ -5,6 +5,8 @@ VisualStudioVersion = 17.4.33205.214
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "clibr", "clibr\clibr.vcxproj", "{9F3F6187-CC98-4350-B93E-0E12FAD8A26B}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "clibrTest", "clibrTest\clibrTest.vcxproj", "{D8060AA9-401A-432A-ADF3-C91819683F4B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -21,6 +23,14 @@ Global
 		{9F3F6187-CC98-4350-B93E-0E12FAD8A26B}.Release|x64.Build.0 = Release|x64
 		{9F3F6187-CC98-4350-B93E-0E12FAD8A26B}.Release|x86.ActiveCfg = Release|Win32
 		{9F3F6187-CC98-4350-B93E-0E12FAD8A26B}.Release|x86.Build.0 = Release|Win32
+		{D8060AA9-401A-432A-ADF3-C91819683F4B}.Debug|x64.ActiveCfg = Debug|x64
+		{D8060AA9-401A-432A-ADF3-C91819683F4B}.Debug|x64.Build.0 = Debug|x64
+		{D8060AA9-401A-432A-ADF3-C91819683F4B}.Debug|x86.ActiveCfg = Debug|Win32
+		{D8060AA9-401A-432A-ADF3-C91819683F4B}.Debug|x86.Build.0 = Debug|Win32
+		{D8060AA9-401A-432A-ADF3-C91819683F4B}.Release|x64.ActiveCfg = Release|x64
+		{D8060AA9-401A-432A-ADF3-C91819683F4B}.Release|x64.Build.0 = Release|x64
+		{D8060AA9-401A-432A-ADF3-C91819683F4B}.Release|x86.ActiveCfg = Release|Win32
+		{D8060AA9-401A-432A-ADF3-C91819683F4B}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

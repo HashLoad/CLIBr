@@ -11,8 +11,8 @@ namespace clibr
     class CommandTemplates : public ICommand
     {
     public:
-        bool execute(const std::string& dirName, const std::string& fileName,
-            ICli* cli) override;
+        bool execute([[maybe_unused]] const std::string& dirName, 
+            [[maybe_unused]] const std::string& fileName, [[maybe_unused]] ICli* cli) override;
         ~CommandTemplates() override = default;
     };
 }

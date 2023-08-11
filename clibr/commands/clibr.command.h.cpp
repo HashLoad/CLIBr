@@ -7,8 +7,8 @@
 
 namespace clibr
 {
-    bool CommandHelp::execute(
-        const std::string& dirName, const std::string& fileName, ICli* cli)
+    bool CommandHelp::execute([[maybe_unused]] const std::string& dirName, 
+        [[maybe_unused]] const std::string& fileName, [[maybe_unused]] ICli* cli)
     {
         if (cli->commandExecuted() == "generate" || cli->commandExecuted() == "g") {
             _executeInternalG();

@@ -11,7 +11,7 @@ namespace clibr
         const std::string& dirName, const std::string& fileName, ICli* cli)
     {
         std::string unitName{ Utils::toLowerCase(fileName) };
-        std::string templateFilePath{ cli->pathTemp() + "/vcl.project.form.pasgen" };
+        std::string templateFilePath{ cli->pathTemp() + "/vcl.project.form.pas" };
         std::string templateFileName{ dirName + "/u" + unitName + ".dfm" };
         std::string templateContent{ Utils::readFromFile(templateFilePath) };
 

@@ -4,6 +4,7 @@
 #include <algorithm>
 #include <cctype>
 #include <regex>
+#include <vector>
 #include "clibr.utils.hpp"
 
 namespace clibr
@@ -15,7 +16,6 @@ namespace clibr
         {
             return "Error while opening the file";
         }
-
         std::streampos size{ file.tellg() };
         file.close();
 
@@ -23,18 +23,20 @@ namespace clibr
         {
             return "Error while getting the file size";
         }
-
         return "(" + std::to_string(size) + " bytes)";
     };
 
-    std::string Utils::toLowerCase(const std::string& input)
+    std::string Utils::toLowerCase(std::string input)
     {
-        std::string result;
-        for (char c : input) {
-            result += std::tolower(c);
-        }
-        return result;
+        std::transform(input.begin(), input.end(), input.begin(), ::tolower);
+        return input;
     }
+
+    std::string Utils::toUpperCase(std::string input)
+	{
+		std::transform(input.begin(), input.end(), input.begin(), ::toupper);
+		return input;
+	}
 
     std::string Utils::regexReplaceAll(const std::string& input,
         const std::string& pattern, const std::string& replacement)
@@ -48,7 +50,7 @@ namespace clibr
         std::ifstream inputFile(filePath);
         if (!inputFile.is_open())
         {
-            std::cerr << "Error while opening the file: " << filePath << std::endl;
+            std::cerr << "Error while opening the file: " << filePath << '\n';
             return "";
         }
         std::string content((std::istreambuf_iterator<char>(inputFile)),
@@ -62,7 +64,7 @@ namespace clibr
         std::ofstream outputFile(filePath);
         if (!outputFile.is_open())
         {
-            std::cerr << "Error while opening the file for writing: " << filePath << std::endl;
+            std::cerr << "Error while opening the file for writing: " << filePath << '\n';
             return false;
         }
         outputFile << content;
@@ -74,12 +76,31 @@ namespace clibr
         const std::string& pattern, const std::string& replacement)
     {
         std::string result{ original };
-        size_t pos = 0;
+        size_t pos{ 0 };
 
         while ((pos = result.find(pattern, pos)) != std::string::npos)
         {
             result.replace(pos, pattern.length(), replacement);
             pos += replacement.length();
+        }
+        return result;
+    }
+
+    std::vector<std::string> Utils::split(const std::string& input, char delimiter)
+    {
+        std::vector<std::string> result;
+        std::string current;
+        for (char c : input) {
+            if (c == delimiter) {
+                result.push_back(current);
+                current.clear();
+            }
+            else {
+                current += c;
+            }
+        }
+        if (!current.empty()) {
+            result.push_back(current);
         }
         return result;
     }

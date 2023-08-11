@@ -16,31 +16,31 @@ namespace clibr
 
     void Print::printCreate(const std::string& title, const std::string& text, const std::string& message)
     {
-        std::cout << _green << title << " " << text << " " << message << _reset << '/n';
+        std::cout << _green << title << " " << text << " " << message << _reset << '\n';
     };
 
     void Print::printUpdate(const std::string& title, const std::string& text, const std::string& message)
     {
-        std::cout << _cyan << title << " " + text << " " << message << _reset << '/n';
+        std::cout << _cyan << title << " " + text << " " << message << _reset << '\n';
     };
 
     void Print::printVersion(const std::string& message)
     {
-        std::cout << _magenta << message << _reset << '/n';
+        std::cout << _magenta << message << _reset << '\n';
     };
 
     void Print::printLink(const std::string& message)
     {
-        std::cout << _blue << message << _reset << '/n';
+        std::cout << _blue << message << _reset << '\n';
     };
 
     void Print::printAlert(const std::string& message)
     {
-        std::cout << _red << message << _reset << '/n';
+        std::cout << _red << message << _reset << '\n';
     };
 
     void Print::printHelp(const std::string& message)
     {
-        std::cout << _yellow << message << _reset << '/n';
+        std::cout << _yellow << message << _reset << '\n';
     };
 }

@@ -34,10 +34,10 @@ namespace clibr
 
         const MapTags& tags{ cli->tags() };
         // VCL
-        bool isVCL{ cli->tags().at("--vcl") };
+        bool isVCL{ tags.at("--vcl") };
 
         // Horse
-        bool isHorse{ cli->tags().at("--horse") };
+        bool isHorse{ tags.at("--horse") };
 
         if (isHorse) {
             _createProjectHorse(projectPath, fileName, cli);

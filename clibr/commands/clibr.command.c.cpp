@@ -28,10 +28,10 @@ namespace clibr
 
         if (!std::filesystem::exists(sourcePath))
         {
-            std::filesystem::create_directories(sourcePath);
+            bool isCreate{ std::filesystem::create_directories(sourcePath) };
         }
 
-        std::string templateFilePath{ cli->pathTemp() + "/controller.pasgen" };
+        std::string templateFilePath{ cli->pathTemp() + "/controller.pas" };
         std::string templateFileName{ sourcePath + "/" + unitName + ".controller.pas" };
         std::string templateContent{ Utils::readFromFile(templateFilePath) };
         std::string modifiedContent{ Utils::replaceString(templateContent, "{unitName}", unitName) };

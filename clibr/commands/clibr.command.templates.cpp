@@ -7,8 +7,8 @@
 
 namespace clibr
 {
-    bool CommandTemplates::execute(
-        const std::string& dirName, const std::string& fileName, ICli* cli)
+    bool CommandTemplates::execute([[maybe_unused]] const std::string& dirName, 
+        [[maybe_unused]] const std::string& fileName, [[maybe_unused]] ICli* cli)
     {
         ListText printText;
         printText.reserve(21);

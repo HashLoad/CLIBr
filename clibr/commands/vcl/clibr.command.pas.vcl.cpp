@@ -16,7 +16,7 @@ namespace clibr
             return false;
         }
         std::string unitName{ Utils::toLowerCase(fileName) };
-        std::string templateFilePath{ cli->pathTemp() + "/vcl.project.unit.pasgen" };
+        std::string templateFilePath{ cli->pathTemp() + "/vcl.project.unit.pas" };
         std::string templateFileName{ dirName + "/u" + unitName + ".pas" };
         std::string templateContent{ Utils::readFromFile(templateFilePath) };
         std::string modifiedContent{ Utils::replaceString(templateContent, "{unitName}", unitName) };

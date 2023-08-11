@@ -21,7 +21,6 @@
 #include "commands/clibr.command.r.hpp"
 #include "clibr.cli.hpp"
 
-
 namespace clibr
 {
     Cli::Cli(const std::string& pathTemp) : _pathTemp(pathTemp)

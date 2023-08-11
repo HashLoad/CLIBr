@@ -28,9 +28,9 @@ namespace clibr
 
         if (std::filesystem::exists(sourcePath))
         {
-            std::filesystem::create_directories(sourcePath);
+            bool isCreate{ std::filesystem::create_directories(sourcePath) };
         }
-        std::string templateFilePath{ cli->pathTemp() + "/pipe.pasgen" };
+        std::string templateFilePath{ cli->pathTemp() + "/pipe.pas" };
         std::string templateFileName{ dirName + "/" + unitName + ".dpr" };
         std::string templateContent{ Utils::readFromFile(templateFilePath) };
         std::string modifiedContent{ Utils::replaceString(templateContent, "{pipeName}", className) };
