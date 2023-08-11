@@ -5,12 +5,15 @@
 #include "core/clibr.print.hpp"
 #include "../clibr.interfaces.hpp"
 
-bool clibr::CommandInfra::execute(
-    const std::string& dirName, const std::string& fileName, clibr::ICli* cli)
+namespace clibr
 {
-    std::cout << "version";
+    bool CommandInfra::execute(
+        const std::string& dirName, const std::string& fileName, ICli* cli)
+    {
+        std::cout << "version";
 
-    return true;
-};
+        return true;
+    };
 
-clibr::CommandInfra::~CommandInfra() {};
+    CommandInfra::~CommandInfra() {};
+}

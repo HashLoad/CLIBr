@@ -21,163 +21,167 @@
 #include "commands/clibr.command.r.hpp"
 #include "clibr.cli.hpp"
 
-clibr::Cli::Cli(const std::string& pathTemp) : _pathTemp(pathTemp)
+
+namespace clibr
 {
-    this->_optionsInfos = 
-    { 
-        { "version", new clibr::CommandPair(std::make_shared<clibr::CommandVersion>()) },
-        { "v", new clibr::CommandPair(std::make_shared<clibr::CommandVersion>()) },
-        { "info", new clibr::CommandPair(std::make_shared<clibr::CommandInfo>()) },
-        { "i", new clibr::CommandPair(std::make_shared<clibr::CommandInfo>()) },
-        { "templates", new clibr::CommandPair(std::make_shared<clibr::CommandTemplates>()) },
-        { "t", new clibr::CommandPair(std::make_shared<clibr::CommandTemplates>()) },
-    };
-
-    this->_optionsHelp = 
+    Cli::Cli(const std::string& pathTemp) : _pathTemp(pathTemp)
     {
-        { "--help", new clibr::CommandPair(std::make_shared<clibr::CommandHelp>()) },
-        { "-h", new clibr::CommandPair(std::make_shared<clibr::CommandHelp>()) },
-    };
+        this->_optionsInfos =
+        {
+            { "version", new CommandPair(std::make_shared<CommandVersion>()) },
+            { "v", new CommandPair(std::make_shared<CommandVersion>()) },
+            { "info", new CommandPair(std::make_shared<CommandInfo>()) },
+            { "i", new CommandPair(std::make_shared<CommandInfo>()) },
+            { "templates", new CommandPair(std::make_shared<CommandTemplates>()) },
+            { "t", new CommandPair(std::make_shared<CommandTemplates>()) },
+        };
 
-    this->_optionsNew = 
-    {
-        { "application", new clibr::CommandPair(std::make_shared<clibr::CommandGenerateProject>()) },
-        { "app", new clibr::CommandPair(std::make_shared<clibr::CommandGenerateProject>()) },
-        { "new", new clibr::CommandPair(std::make_shared<clibr::CommandGenerateProject>()) },
-        { "--help", new clibr::CommandPair(std::make_shared<clibr::CommandHelp>()) },
-        { "-h", new clibr::CommandPair(std::make_shared<clibr::CommandHelp>()) },
-    };
+        this->_optionsHelp =
+        {
+            { "--help", new CommandPair(std::make_shared<CommandHelp>()) },
+            { "-h", new CommandPair(std::make_shared<CommandHelp>()) },
+        };
 
-    this->_optionsGenerate = 
-    {
-        { "module", new clibr::CommandPair(std::make_shared<clibr::CommandModule>()) },
-        { "m", new clibr::CommandPair(std::make_shared<clibr::CommandModule>()) },
-        { "controller", new clibr::CommandPair(std::make_shared<clibr::CommandController>()) },
-        { "c", new clibr::CommandPair(std::make_shared<clibr::CommandController>()) },
-        { "service", new clibr::CommandPair(std::make_shared<clibr::CommandService>()) },
-        { "s", new clibr::CommandPair(std::make_shared<clibr::CommandService>()) },
-        { "repository", new clibr::CommandPair(std::make_shared<clibr::CommandRepository>()) },
-        { "r", new clibr::CommandPair(std::make_shared<clibr::CommandRepository>()) },
-        { "infra", new clibr::CommandPair(std::make_shared<clibr::CommandInfra>()) },
-        { "i", new clibr::CommandPair(std::make_shared<clibr::CommandInfra>()) },
-        { "pipe", new clibr::CommandPair(std::make_shared<clibr::CommandTransformPipe>()) },
-        { "p", new clibr::CommandPair(std::make_shared<clibr::CommandTransformPipe>()) },
-        { "all", new clibr::CommandPair(std::make_shared<clibr::CommandAll>()) },
-        { "--help", new clibr::CommandPair(std::make_shared<clibr::CommandHelp>()) },
-        { "-h", new clibr::CommandPair(std::make_shared<clibr::CommandHelp>()) },
-    };
+        this->_optionsNew =
+        {
+            { "application", new CommandPair(std::make_shared<CommandGenerateProject>()) },
+            { "app", new CommandPair(std::make_shared<CommandGenerateProject>()) },
+            { "new", new CommandPair(std::make_shared<CommandGenerateProject>()) },
+            { "--help", new CommandPair(std::make_shared<CommandHelp>()) },
+            { "-h", new CommandPair(std::make_shared<CommandHelp>()) },
+        };
 
-    this->_optionsInternal =
-    {
-        { "handler", new clibr::CommandPair(std::make_shared<clibr::CommandRouteHandler>()) },
-        { "horse-app", new clibr::CommandPair(std::make_shared<clibr::CommandGenerateProjectHorse>()) },
-        { "horse-handler", new clibr::CommandPair(std::make_shared<clibr::CommandRouteHandlerHorse>()) },
-        { "vcl-app", new clibr::CommandPair(std::make_shared<clibr::CommandGenerateProjectVCL>()) },
-    };
+        this->_optionsGenerate =
+        {
+            { "module", new CommandPair(std::make_shared<CommandModule>()) },
+            { "m", new CommandPair(std::make_shared<CommandModule>()) },
+            { "controller", new CommandPair(std::make_shared<CommandController>()) },
+            { "c", new CommandPair(std::make_shared<CommandController>()) },
+            { "service", new CommandPair(std::make_shared<CommandService>()) },
+            { "s", new CommandPair(std::make_shared<CommandService>()) },
+            { "repository", new CommandPair(std::make_shared<CommandRepository>()) },
+            { "r", new CommandPair(std::make_shared<CommandRepository>()) },
+            { "infra", new CommandPair(std::make_shared<CommandInfra>()) },
+            { "i", new CommandPair(std::make_shared<CommandInfra>()) },
+            { "pipe", new CommandPair(std::make_shared<CommandTransformPipe>()) },
+            { "p", new CommandPair(std::make_shared<CommandTransformPipe>()) },
+            { "all", new CommandPair(std::make_shared<CommandAll>()) },
+            { "--help", new CommandPair(std::make_shared<CommandHelp>()) },
+            { "-h", new CommandPair(std::make_shared<CommandHelp>()) },
+        };
 
-    this->_commands = 
-    {
-        { "new", _optionsNew },
-        { "n", _optionsNew },
-        { "generate", _optionsGenerate },
-        { "g", _optionsGenerate },
-        { "info", _optionsInfos },
-        { "i", _optionsInfos },
-        { "templates", _optionsInfos },
-        { "t", _optionsInfos },
-        { "version", _optionsInfos },
-        { "v", _optionsInfos },
-        { "--help", _optionsHelp },
-        { "-h", _optionsHelp },
-    };
+        this->_optionsInternal =
+        {
+            { "handler", new CommandPair(std::make_shared<CommandRouteHandler>()) },
+            { "horse-app", new CommandPair(std::make_shared<CommandGenerateProjectHorse>()) },
+            { "horse-handler", new CommandPair(std::make_shared<CommandRouteHandlerHorse>()) },
+            { "vcl-app", new CommandPair(std::make_shared<CommandGenerateProjectVCL>()) },
+        };
 
-    this->_tags =
-    {
-        { "-gu", false },
-        { "--guard", false },
-        { "--horse", false },
-        { "--vcl", false },
-    };
-}
+        this->_commands =
+        {
+            { "new", _optionsNew },
+            { "n", _optionsNew },
+            { "generate", _optionsGenerate },
+            { "g", _optionsGenerate },
+            { "info", _optionsInfos },
+            { "i", _optionsInfos },
+            { "templates", _optionsInfos },
+            { "t", _optionsInfos },
+            { "version", _optionsInfos },
+            { "v", _optionsInfos },
+            { "--help", _optionsHelp },
+            { "-h", _optionsHelp },
+        };
 
-clibr::Cli::~Cli()
-{
-    for (clibr::forPair& command : this->_optionsInfos)
-    {
-        delete command.second;
+        this->_tags =
+        {
+            { "-gu", false },
+            { "--guard", false },
+            { "--horse", false },
+            { "--vcl", false },
+        };
     }
-    this->_optionsInfos.clear();
 
-    for (clibr::forPair& command : this->_optionsHelp)
+    Cli::~Cli()
     {
-        delete command.second;
-    }
-    this->_optionsHelp.clear();
+        for (forPair& command : this->_optionsInfos)
+        {
+            delete command.second;
+        }
+        this->_optionsInfos.clear();
 
-    for (clibr::forPair& command : this->_optionsNew)
+        for (forPair& command : this->_optionsHelp)
+        {
+            delete command.second;
+        }
+        this->_optionsHelp.clear();
+
+        for (forPair& command : this->_optionsNew)
+        {
+            delete command.second;
+        }
+        this->_optionsNew.clear();
+
+        for (forPair& command : this->_optionsGenerate)
+        {
+            delete command.second;
+        }
+        this->_optionsGenerate.clear();
+
+        for (forPair& command : this->_optionsInternal)
+        {
+            delete command.second;
+        }
+        this->_optionsInternal.clear();
+
+        this->_tags.clear();
+        this->_commands.clear();
+        this->_updates.clear();
+    }
+
+    const std::string& Cli::pathTemp() const
     {
-        delete command.second;
+        return this->_pathTemp;
     }
-    this->_optionsNew.clear();
 
-    for (clibr::forPair& command : this->_optionsGenerate)
+    const std::string& Cli::commandExecuted() const
     {
-        delete command.second;
+        return this->_commandExecuted;
     }
-    this->_optionsGenerate.clear();
 
-    for (clibr::forPair& command : this->_optionsInternal)
+    void Cli::commandExecuted(const std::string& value)
     {
-        delete command.second;
+        this->_commandExecuted = value;
     }
-    this->_optionsInternal.clear();
 
-    this->_tags.clear();
-    this->_commands.clear();
-    this->_updates.clear();
-}
+    const MapCommands& Cli::commands() const
+    {
+        return this->_commands;
+    };
 
-const std::string& clibr::Cli::pathTemp() const
-{
-    return this->_pathTemp;
-}
+    const MapOptions& Cli::optionsInternal() const
+    {
+        return this->_optionsInternal;
+    }
 
-const std::string& clibr::Cli::commandExecuted() const
-{
-    return this->_commandExecuted;
-}
+    const MapTags& Cli::tags() const
+    {
+        return this->_tags;
+    }
 
-void clibr::Cli::commandExecuted(const std::string& value)
-{
-    this->_commandExecuted = value;
-}
+    const ListUpdates& Cli::updates() const
+    {
+        return this->_updates;
+    }
 
-const clibr::MapCommands& clibr::Cli::commands() const
-{
-    return this->_commands;
-};
+    void Cli::setTagValue(const std::string& name, const bool value)
+    {
+        this->_tags[name] = value;
+    }
 
-const clibr::MapOptions& clibr::Cli::optionsInternal() const
-{
-    return this->_optionsInternal;
-}
-
-const clibr::MapTags& clibr::Cli::tags() const 
-{
-    return this->_tags;
-}
-
-const clibr::ListUpdates& clibr::Cli::updates() const 
-{
-    return this->_updates;
-}
-
-void clibr::Cli::setTagValue(const std::string& name, const bool value)
-{
-    this->_tags[name] = value;
-}
-
-void clibr::Cli::setUpdate(const std::string& value)
-{
-    this->_updates.push_back(value);
+    void Cli::setUpdate(const std::string& value)
+    {
+        this->_updates.push_back(value);
+    }
 }

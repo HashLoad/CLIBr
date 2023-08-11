@@ -8,6 +8,7 @@
 
 namespace clibr
 {
+/*
 	class CommandPair
 	{
 	public:
@@ -19,6 +20,19 @@ namespace clibr
 		void setCommand(std::shared_ptr<ICommand> value);
 	private:
 		std::shared_ptr<ICommand> command;
+	};
+*/
+
+	struct CommandPair
+	{
+		std::shared_ptr<ICommand> command;
+
+		CommandPair();
+		CommandPair(std::shared_ptr<ICommand> value);
+		~CommandPair() = default;
+
+		std::shared_ptr<ICommand> getCommand();
+		void setCommand(std::shared_ptr<ICommand> value);
 	};
 }
 

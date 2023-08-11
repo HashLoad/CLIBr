@@ -2,16 +2,18 @@
 #include "../../clibr.interfaces.hpp"
 #include "clibr.command.pair.hpp"
 
-clibr::CommandPair::CommandPair() : command(nullptr) {}
-clibr::CommandPair::CommandPair(std::shared_ptr<clibr::ICommand> value) : command(value) {}
-
-std::shared_ptr<clibr::ICommand> clibr::CommandPair::getCommand()
+namespace clibr 
 {
-	return command;
-}
+	CommandPair::CommandPair() : command(nullptr) {}
+	CommandPair::CommandPair(std::shared_ptr<ICommand> value) : command(value) {}
 
-void clibr::CommandPair::setCommand(std::shared_ptr<clibr::ICommand> value)
-{
-    command = std::move(value);
-}
+	std::shared_ptr<ICommand> CommandPair::getCommand()
+	{
+		return command;
+	}
 
+	void CommandPair::setCommand(std::shared_ptr<ICommand> value)
+	{
+		command = std::move(value);
+	}
+}

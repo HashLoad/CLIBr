@@ -5,26 +5,29 @@
 #include "../core/clibr.print.hpp"
 #include "../../clibr.interfaces.hpp"
 
-bool clibr::CommandGenerateFormVCL::execute(
-    const std::string& dirName, const std::string& fileName, clibr::ICli* cli)
+namespace clibr
 {
-    std::string unitName{ clibr::Utils::toLowerCase(fileName) };
-    std::string templateFilePath{ cli->pathTemp() + "/vcl.project.form.pas" };
-    std::string templateFileName{ dirName + "/u" + unitName + ".dfm" };
-    std::string templateContent{ clibr::Utils::readFromFile(templateFilePath) };
-
-    if (fileName.empty())
+    bool CommandGenerateFormVCL::execute(
+        const std::string& dirName, const std::string& fileName, ICli* cli)
     {
-        clibr::Print::printAlert("Invalid parameters!");
-        return false;
-    }
+        std::string unitName{ Utils::toLowerCase(fileName) };
+        std::string templateFilePath{ cli->pathTemp() + "/vcl.project.form.pas" };
+        std::string templateFileName{ dirName + "/u" + unitName + ".dfm" };
+        std::string templateContent{ Utils::readFromFile(templateFilePath) };
 
-    bool isSuccess{ clibr::Utils::writeToFile(templateFileName, templateContent) };
-    if (isSuccess)
-    {
-        clibr::Print::printCreate("CREATE", templateFileName, clibr::Utils::getSizeFile(templateFileName));
-    }
-    return isSuccess;
-};
+        if (fileName.empty())
+        {
+            Print::printAlert("Invalid parameters!");
+            return false;
+        }
 
-clibr::CommandGenerateFormVCL::~CommandGenerateFormVCL(){};
+        bool isSuccess{ Utils::writeToFile(templateFileName, templateContent) };
+        if (isSuccess)
+        {
+            Print::printCreate("CREATE", templateFileName, Utils::getSizeFile(templateFileName));
+        }
+        return isSuccess;
+    };
+
+    CommandGenerateFormVCL::~CommandGenerateFormVCL() {};
+}

@@ -5,12 +5,15 @@
 #include "core/clibr.utils.hpp"
 #include "../clibr.interfaces.hpp"
 
-bool clibr::CommandVersion::execute(
-    const std::string& dirName, const std::string& fileName, clibr::ICli* cli)
+namespace clibr
 {
-    std::string version{ "Version: " + clibr::Utils::version() };
-    clibr::Print::printVersion(version);
-    return true;
-};
+    bool CommandVersion::execute(
+        const std::string& dirName, const std::string& fileName, ICli* cli)
+    {
+        std::string version{ "Version: " + Utils::version() };
+        Print::printVersion(version);
+        return true;
+    };
 
-clibr::CommandVersion::~CommandVersion() {};
+    CommandVersion::~CommandVersion() {};
+}

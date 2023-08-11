@@ -2,8 +2,10 @@
     "configurations": [
         {
             "name": "Configuração Padrão",
-            "defines": [],
+            "defines": ["_DEBUG", "UNICODE", "_UNICODE"],
             "compilerPath": "D:\\mingw64\\bin\\clang++.exe",
+            "cStandard": "gnu17",
+            "cppStandard": "gnu++20",
             "intelliSenseMode": "${default}",
             "includePath": [
                 "${workspaceFolder}/**"

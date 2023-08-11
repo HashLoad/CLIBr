@@ -5,12 +5,15 @@
 #include "core/clibr.print.hpp"
 #include "../clibr.interfaces.hpp"
 
-bool clibr::CommandRepository::execute(
-    const std::string& dirName, const std::string& fileName, clibr::ICli* cli)
+namespace clibr
 {
-    std::cout << "version";
+    bool CommandRepository::execute(
+        const std::string& dirName, const std::string& fileName, ICli* cli)
+    {
+        std::cout << "version";
 
-    return true;
-};
+        return true;
+    };
 
-clibr::CommandRepository::~CommandRepository() {};
+    CommandRepository::~CommandRepository() {};
+}

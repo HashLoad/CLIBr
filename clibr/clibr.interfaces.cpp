@@ -1,4 +1,7 @@
 #include "clibr.interfaces.hpp"
 
-clibr::ICommand::~ICommand() {};
-clibr::ICli::~ICli() {};
+namespace clibr
+{
+	ICommand::~ICommand() {};
+	ICli::~ICli() {};
+}

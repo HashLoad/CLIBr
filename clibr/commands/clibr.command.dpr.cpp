@@ -10,127 +10,129 @@
 #include "vcl/clibr.command.pas.vcl.hpp"
 #include "../clibr.interfaces.hpp"
 
-bool clibr::CommandGenerateProject::execute(
-    const std::string& dirName, const std::string& fileName, clibr::ICli* cli)
+namespace clibr
 {
-    if (fileName.empty())
+    bool CommandGenerateProject::execute(
+        const std::string& dirName, const std::string& fileName, ICli* cli)
     {
-        clibr::Print::printAlert("Invalid parameters!");
-        return false;
-    }
-    std::string projectPath{ dirName };
-    std::string sourcePath{ dirName };
-
-    if (!std::filesystem::exists(projectPath))
-    {
-        if (!std::filesystem::create_directories(projectPath))
+        if (fileName.empty())
         {
+            Print::printAlert("Invalid parameters!");
             return false;
         }
+        std::string projectPath{ dirName };
+        std::string sourcePath{ dirName };
+
+        if (!std::filesystem::exists(projectPath))
+        {
+            if (!std::filesystem::create_directories(projectPath))
+            {
+                return false;
+            }
+        }
+        sourcePath += "/src/modules/ping";
+
+        const MapTags& tags{ cli->tags() };
+        // VCL
+        bool isVCL{ cli->tags().at("--vcl") };
+
+        // Horse
+        bool isHorse{ cli->tags().at("--horse") };
+
+        if (isHorse) {
+            _createProjectHorse(projectPath, fileName, cli);
+            _createAppModule(projectPath + "/src", "app", cli);
+            _createRouteHandleHorse(sourcePath, "ping", cli);
+        }
+        else if (isVCL) {
+            _createProjectVCL(projectPath, fileName, cli);
+            _createAppModule(projectPath + "/src", "app", cli);
+            _createRouteHandle(sourcePath, "ping", cli);
+        }
+        else {
+            _createProject(projectPath, fileName, cli);
+            _createAppModule(projectPath + "/src", "app", cli);
+            _createRouteHandle(sourcePath, "ping", cli);
+        }
+        _createModule(sourcePath, "ping", cli);
+        _createController(sourcePath + "/controllers", "ping", cli);
+        _createService(sourcePath + "/services", "ping", cli);
+
+        return true;
+    };
+
+    CommandGenerateProject::~CommandGenerateProject() {};
+
+    void CommandGenerateProject::_createProject(const std::string& dirName,
+        const std::string& fileName, ICli* cli)
+    {
+        CommandGenerateProjectConsole projectConsole;
+        projectConsole.execute(dirName, fileName, cli);
     }
-    sourcePath += "/src/modules/ping";
 
-    const clibr::MapTags& tags{ cli->tags() };
-    // VCL
-    bool isVCL{ cli->tags().at("--vcl") };
- 
-    // Horse
-    bool isHorse{ cli->tags().at("--horse") };
- 
-    if (isHorse) {
-        _createProjectHorse(projectPath, fileName, cli);
-        _createAppModule(projectPath + "/src", "app", cli);
-        _createRouteHandleHorse(sourcePath, "ping", cli);
+    void CommandGenerateProject::_createAppModule(const std::string& dirName,
+        const std::string& fileName, ICli* cli)
+    {
+        _createModule(dirName, fileName, cli);
     }
-    else if (isVCL) {
-        _createProjectVCL(projectPath, fileName, cli);
-        _createAppModule(projectPath + "/src", "app", cli);
-        _createRouteHandle(sourcePath, "ping", cli);
+
+    void CommandGenerateProject::_createModule(const std::string& dirName,
+        const std::string& fileName, ICli* cli)
+    {
+        CommandPair* commandPair{ cli->commands().at("g").at("m") };
+        std::shared_ptr<ICommand> command{ commandPair->getCommand() };
+        command->execute(dirName, fileName, cli);
     }
-    else {
-        _createProject(projectPath, fileName, cli);
-        _createAppModule(projectPath + "/src", "app", cli);
-        _createRouteHandle(sourcePath, "ping", cli);
+
+    void CommandGenerateProject::_createController(const std::string& dirName,
+        const std::string& fileName, ICli* cli) {
+        CommandPair* commandPair{ cli->commands().at("g").at("c") };
+        std::shared_ptr<ICommand> command{ commandPair->getCommand() };
+        command->execute(dirName, fileName, cli);
     }
-    _createModule(sourcePath, "ping", cli);
-    _createController(sourcePath + "/controllers", "ping", cli);
-    _createService(sourcePath + "/services", "ping", cli);
 
-    return true;
-};
+    void CommandGenerateProject::_createService(const std::string& dirName,
+        const std::string& fileName, ICli* cli)
+    {
+        CommandPair* commandPair{ cli->commands().at("g").at("s") };
+        std::shared_ptr<ICommand> command{ commandPair->getCommand() };
+        command->execute(dirName, fileName, cli);
+    }
 
-clibr::CommandGenerateProject::~CommandGenerateProject() {};
+    void CommandGenerateProject::_createProjectHorse(const std::string& dirName,
+        const std::string& fileName, ICli* cli)
+    {
+        CommandPair* commandPair{ cli->optionsInternal().at("horse-app") };
+        std::shared_ptr<ICommand> command{ commandPair->getCommand() };
+        command->execute(dirName, fileName, cli);
+    }
 
-void clibr::CommandGenerateProject::_createProject(const std::string& dirName, 
-    const std::string& fileName, clibr::ICli* cli)
-{
-    clibr::CommandGenerateProjectConsole projectConsole;
-    projectConsole.execute(dirName, fileName, cli);
+    void CommandGenerateProject::_createRouteHandleHorse(const std::string& dirName,
+        const std::string& fileName, ICli* cli)
+    {
+        CommandPair* commandPair{ cli->optionsInternal().at("horse-handler") };
+        std::shared_ptr<ICommand> command{ commandPair->getCommand() };
+        command->execute(dirName, fileName, cli);
+    }
+
+    void CommandGenerateProject::_createRouteHandle(const std::string& dirName,
+        const std::string& fileName, ICli* cli)
+    {
+        CommandPair* commandPair{ cli->optionsInternal().at("handler") };
+        std::shared_ptr<ICommand> command{ commandPair->getCommand() };
+        command->execute(dirName, fileName, cli);
+    }
+
+    void CommandGenerateProject::_createProjectVCL(const std::string& dirName,
+        const std::string& fileName, ICli* cli)
+    {
+        CommandGenerateFormVCL formVCL;
+        CommandGenerateUnitVCL unitVCL;
+        CommandPair* commandPair{ cli->optionsInternal().at("vcl-app") };
+        std::shared_ptr<ICommand> command{ commandPair->getCommand() };
+
+        command->execute(dirName, fileName, cli);
+        formVCL.execute(dirName, fileName, cli);
+        unitVCL.execute(dirName, fileName, cli);
+    }
 }
-
-void clibr::CommandGenerateProject::_createAppModule(const std::string& dirName, 
-    const std::string& fileName, clibr::ICli* cli)
-{
-    _createModule(dirName, fileName, cli);
-}
-
-void clibr::CommandGenerateProject::_createModule(const std::string& dirName, 
-    const std::string& fileName, clibr::ICli* cli)
-{
-    clibr::CommandPair* commandPair{ cli->commands().at("g").at("m") };
-    std::shared_ptr<ICommand> command{ commandPair->getCommand() };
-    command->execute(dirName, fileName, cli);
-}
-
-void clibr::CommandGenerateProject::_createController(const std::string& dirName, 
-    const std::string& fileName, clibr::ICli* cli) {
-    clibr::CommandPair* commandPair{ cli->commands().at("g").at("c") };
-    std::shared_ptr<ICommand> command{ commandPair->getCommand() };
-    command->execute(dirName, fileName, cli);
-}
-
-void clibr::CommandGenerateProject::_createService(const std::string& dirName, 
-    const std::string& fileName, clibr::ICli* cli)
-{
-    clibr::CommandPair* commandPair{ cli->commands().at("g").at("s") };
-    std::shared_ptr<ICommand> command{ commandPair->getCommand() };
-    command->execute(dirName, fileName, cli);
-}
-
-void clibr::CommandGenerateProject::_createProjectHorse(const std::string& dirName, 
-    const std::string& fileName, clibr::ICli* cli)
-{
-    clibr::CommandPair* commandPair{ cli->optionsInternal().at("horse-app") };
-    std::shared_ptr<ICommand> command{ commandPair->getCommand() };
-    command->execute(dirName, fileName, cli);
-}
-
-void clibr::CommandGenerateProject::_createRouteHandleHorse(const std::string& dirName, 
-    const std::string& fileName, clibr::ICli* cli)
-{
-    clibr::CommandPair* commandPair{ cli->optionsInternal().at("horse-handler") };
-    std::shared_ptr<ICommand> command{ commandPair->getCommand() };
-    command->execute(dirName, fileName, cli);
-}
-
-void clibr::CommandGenerateProject::_createRouteHandle(const std::string& dirName, 
-    const std::string& fileName, clibr::ICli* cli)
-{
-    clibr::CommandPair* commandPair{ cli->optionsInternal().at("handler") };
-    std::shared_ptr<ICommand> command{ commandPair->getCommand() };
-    command->execute(dirName, fileName, cli);
-}
-
-void clibr::CommandGenerateProject::_createProjectVCL(const std::string& dirName, 
-    const std::string& fileName, clibr::ICli* cli)
-{
-    clibr::CommandGenerateFormVCL formVCL;
-    clibr::CommandGenerateUnitVCL unitVCL;
-    clibr::CommandPair* commandPair{ cli->optionsInternal().at("vcl-app") };
-    std::shared_ptr<ICommand> command{ commandPair->getCommand() };
-
-    command->execute(dirName, fileName, cli);
-    formVCL.execute(dirName, fileName, cli);
-    unitVCL.execute(dirName, fileName, cli);
-}
-

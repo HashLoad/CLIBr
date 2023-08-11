@@ -7,80 +7,83 @@
 #include "core/clibr.command.pair.hpp"
 #include "../clibr.interfaces.hpp"
 
-bool clibr::CommandAll::execute(
-    const std::string& dirName, const std::string& fileName, clibr::ICli* cli)
+namespace clibr
 {
-    if (fileName.empty())
+    bool CommandAll::execute(
+        const std::string& dirName, const std::string& fileName, ICli* cli)
     {
-        clibr::Print::printAlert("Invalid parameters!");
-        return false;
-    }
-    std::string allPath{ dirName };
-    std::string sourcePath{ dirName };
+        if (fileName.empty())
+        {
+            Print::printAlert("Invalid parameters!");
+            return false;
+        }
+        std::string allPath{ dirName };
+        std::string sourcePath{ dirName };
 
-    if (allPath.empty() || allPath == ".")
+        if (allPath.empty() || allPath == ".")
+        {
+            allPath = "./src/";
+            sourcePath = "./src";
+        }
+
+        if (!std::filesystem::exists(allPath))
+        {
+            bool isCreate{ std::filesystem::create_directories(allPath) };
+        }
+        sourcePath += "/modules/" + fileName;
+
+        // Horse
+        bool isHorse{ cli->tags().at("--horse") };
+
+        isHorse ? _createRouteHandleHorse(sourcePath, fileName, cli) :
+            _createRouteHandle(sourcePath, fileName, cli);
+
+        _createModule(sourcePath, fileName, cli);
+        _createController(sourcePath + "/controllers", fileName, cli);
+        _createService(sourcePath + "/services", fileName, cli);
+
+        return true;
+    };
+
+    CommandAll::~CommandAll() {};
+
+    void CommandAll::_createModule(const std::string& dirName,
+        const std::string& fileName, ICli* cli)
     {
-        allPath = "./src/";
-        sourcePath = "./src";
+        CommandPair* commandPair{ cli->commands().at("g").at("m") };
+        std::shared_ptr<ICommand> command{ commandPair->getCommand() };
+        bool isSuccess = command->execute(dirName, fileName, cli);
     }
 
-    if (!std::filesystem::exists(allPath))
+    void CommandAll::_createController(const std::string& dirName,
+        const std::string& fileName, ICli* cli)
     {
-        bool isCreate{ std::filesystem::create_directories(allPath) };
+        CommandPair* commandPair{ cli->commands().at("g").at("c") };
+        std::shared_ptr<ICommand> command{ commandPair->getCommand() };
+        bool isSuccess = command->execute(dirName, fileName, cli);
     }
-    sourcePath += "/modules/" + fileName;
 
-    // Horse
-    bool isHorse{ cli->tags().at("--horse") };
+    void CommandAll::_createService(const std::string& dirName,
+        const std::string& fileName, ICli* cli)
+    {
+        CommandPair* commandPair{ cli->commands().at("g").at("s") };
+        std::shared_ptr<ICommand> command{ commandPair->getCommand() };
+        bool isSuccess = command->execute(dirName, fileName, cli);
+    }
 
-    isHorse ? _createRouteHandleHorse(sourcePath, fileName, cli) : 
-              _createRouteHandle(sourcePath, fileName, cli);
+    void CommandAll::_createRouteHandleHorse(const std::string& dirName,
+        const std::string& fileName, ICli* cli)
+    {
+        CommandPair* commandPair{ cli->optionsInternal().at("horse-handler") };
+        std::shared_ptr<ICommand> command{ commandPair->getCommand() };
+        bool isSuccess = command->execute(dirName, fileName, cli);
+    }
 
-    _createModule(sourcePath, fileName, cli);
-    _createController(sourcePath + "/controllers", fileName, cli);
-    _createService(sourcePath + "/services", fileName, cli);
-
-    return true;
-};
-
-clibr::CommandAll::~CommandAll() {};
-
-void clibr::CommandAll::_createModule(const std::string& dirName, 
-    const std::string& fileName, clibr::ICli* cli) 
-{
-    clibr::CommandPair* commandPair{ cli->commands().at("g").at("m") };
-    std::shared_ptr<ICommand> command{ commandPair->getCommand() };
-    bool isSuccess = command->execute(dirName, fileName, cli);
-}
-
-void clibr::CommandAll::_createController(const std::string& dirName, 
-    const std::string& fileName, clibr::ICli* cli) 
-{
-    clibr::CommandPair* commandPair{ cli->commands().at("g").at("c") };
-    std::shared_ptr<ICommand> command{ commandPair->getCommand() };
-    bool isSuccess = command->execute(dirName, fileName, cli);
-}
-
-void clibr::CommandAll::_createService(const std::string& dirName, 
-    const std::string& fileName, clibr::ICli* cli) 
-{
-    clibr::CommandPair* commandPair{ cli->commands().at("g").at("s") };
-    std::shared_ptr<ICommand> command{ commandPair->getCommand() };
-    bool isSuccess = command->execute(dirName, fileName, cli);
-}
-
-void clibr::CommandAll::_createRouteHandleHorse(const std::string& dirName, 
-    const std::string& fileName, clibr::ICli* cli) 
-{
-    clibr::CommandPair* commandPair{ cli->optionsInternal().at("horse-handler") };
-    std::shared_ptr<ICommand> command{ commandPair->getCommand() };
-    bool isSuccess = command->execute(dirName, fileName, cli);
-}
-
-void clibr::CommandAll::_createRouteHandle(const std::string& dirName, 
-    const std::string& fileName, clibr::ICli* cli) 
-{
-    clibr::CommandPair* commandPair{ cli->optionsInternal().at("handler") };
-    std::shared_ptr<ICommand> command{ commandPair->getCommand() };
-    bool isSuccess = command->execute(dirName, fileName, cli);
+    void CommandAll::_createRouteHandle(const std::string& dirName,
+        const std::string& fileName, ICli* cli)
+    {
+        CommandPair* commandPair{ cli->optionsInternal().at("handler") };
+        std::shared_ptr<ICommand> command{ commandPair->getCommand() };
+        bool isSuccess = command->execute(dirName, fileName, cli);
+    }
 }
