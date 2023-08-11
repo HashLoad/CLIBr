@@ -4,7 +4,6 @@
 #define TYPEDEF_H
 
 #include <map>
-#include <list>
 #include <vector>
 #include <string>
 

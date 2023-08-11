@@ -1,9 +1,26 @@
 {
     "configurations": [
         {
-            "name": "Configuração Padrão",
+            "name": "clang++.exe",
             "defines": ["_DEBUG", "UNICODE", "_UNICODE"],
             "compilerPath": "D:\\mingw64\\bin\\clang++.exe",
+            "cStandard": "c17",
+            "cppStandard": "c++20",
+            "intelliSenseMode": "${default}",
+            "includePath": [
+                "${workspaceFolder}/**"
+            ],
+            "macFrameworkPath": [],
+            "browse": {
+                "limitSymbolsToIncludedHeaders": true,
+                "databaseFilename": "",
+                "path": []
+            }
+        },
+        {
+            "name": "c++",
+            "defines": ["_DEBUG", "UNICODE", "_UNICODE"],
+            "compilerPath": "D:\\mingw64\\bin\\c++.exe",
             "cStandard": "c17",
             "cppStandard": "c++20",
             "intelliSenseMode": "${default}",

@@ -4,7 +4,6 @@
 #define CLI_H
 
 #include <map>
-#include <list>
 #include <string>
 #include "clibr.interfaces.hpp"
 #include "commands/core/clibr.command.pair.hpp"
