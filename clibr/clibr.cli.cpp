@@ -1,4 +1,3 @@
-#include <iostream>
 #include "commands/core/clibr.command.pair.hpp"
 #include "commands/horse/clibr.command.dpr.horse.hpp"
 #include "commands/horse/clibr.command.handler.horse.hpp"
@@ -20,6 +19,7 @@
 #include "commands/clibr.command.s.hpp"
 #include "commands/clibr.command.r.hpp"
 #include "clibr.cli.hpp"
+#include "clibr.pch.hpp"
 
 namespace clibr
 {

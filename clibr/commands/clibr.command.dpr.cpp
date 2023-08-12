@@ -1,5 +1,3 @@
-#include <iostream>
-#include <string>
 #include <filesystem>
 #include "clibr.command.dpr.hpp"
 #include "core/clibr.utils.hpp"
@@ -8,7 +6,7 @@
 #include "console/clibr.command.dpr.console.hpp"
 #include "vcl/clibr.command.dfm.vcl.hpp"
 #include "vcl/clibr.command.pas.vcl.hpp"
-#include "../clibr.interfaces.hpp"
+#include "../clibr.pch.hpp"
 
 namespace clibr
 {

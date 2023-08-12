@@ -3,8 +3,7 @@
 #ifndef COMMANDPASVCL_H
 #define COMMANDPASVCL_H
 
-#include <string>
-#include "../../clibr.interfaces.hpp"
+#include "../../clibr.pch.hpp"
 
 namespace clibr
 {

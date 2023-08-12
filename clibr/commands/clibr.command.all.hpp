@@ -3,8 +3,7 @@
 #ifndef COMMANDALL_H
 #define COMMANDALL_H
 
-#include <string>
-#include "../clibr.interfaces.hpp"
+#include "../clibr.pch.hpp"
 
 namespace clibr
 {

@@ -179,6 +179,7 @@
     <ClInclude Include="clibr.cli.hpp" />
     <ClInclude Include="clibr.interfaces.hpp" />
     <ClInclude Include="clibr.main.hpp" />
+    <ClInclude Include="clibr.pch.hpp" />
     <ClInclude Include="commands\clibr.command.all.hpp" />
     <ClInclude Include="commands\clibr.command.c.hpp" />
     <ClInclude Include="commands\clibr.command.dpr.hpp" />

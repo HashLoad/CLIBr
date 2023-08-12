@@ -1,6 +1,6 @@
 #include <memory>
-#include "../../clibr.interfaces.hpp"
 #include "clibr.command.pair.hpp"
+#include "../../clibr.interfaces.hpp"
 
 namespace clibr 
 {

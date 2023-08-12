@@ -3,8 +3,7 @@
 #ifndef COMMANDTEMP_H
 #define COMMANDTEMP_H
 
-#include <string>
-#include "../clibr.interfaces.hpp"
+#include "../clibr.pch.hpp"
 
 namespace clibr
 {

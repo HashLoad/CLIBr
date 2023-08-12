@@ -3,11 +3,9 @@
 #ifndef CLI_H
 #define CLI_H
 
-#include <map>
-#include <string>
-#include "clibr.interfaces.hpp"
 #include "commands/core/clibr.command.pair.hpp"
 #include "commands/core/clibr.typedefs.hpp"
+#include "clibr.pch.hpp"
 
 namespace clibr
 {

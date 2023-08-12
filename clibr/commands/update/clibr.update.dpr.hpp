@@ -3,8 +3,7 @@
 #ifndef COMMANDUPDATEDPR_H
 #define COMMANDUPDATEDPR_H
 
-#include <string>
-#include "../../clibr.interfaces.hpp"
+#include "../../clibr.pch.hpp"
 
 namespace clibr
 {

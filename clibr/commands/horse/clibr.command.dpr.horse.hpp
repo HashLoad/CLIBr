@@ -3,8 +3,7 @@
 #ifndef COMMANDHORSEDPR_H
 #define COMMANDHORSEDPR_H
 
-#include <string>
-#include "../../clibr.interfaces.hpp"
+#include "../../clibr.pch.hpp"
 
 namespace clibr
 {
